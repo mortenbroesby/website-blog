@@ -1,0 +1,33 @@
+---
+title: "Example snippet"
+date: "2022-03-31"
+published: true
+---
+
+### Flatten object
+
+<Code
+  language="typescript"
+  code={`
+export function flattenObject(object) {
+  const result = {};
+
+  Object.values(object).forEach((nestedObject) => {
+    Object.assign(result, nestedObject);
+  });
+
+  return result;
+}
+`}
+/>
+
+### No-operation
+
+<Code
+  language="typescript"
+  code={`
+export const noop = (...args: any[]): any => void 0;
+`}
+/
+
+>

@@ -1,17 +1,37 @@
 {
+  "name": "website-blog",
+  "author": "Morten Broesby-Olsen",
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "watch": "next dev",
     "build": "next build",
     "start": "next start"
   },
   "dependencies": {
+    "@mantine/core": "^4.1.0",
+    "@mantine/hooks": "^4.1.0",
+    "@mantine/next": "^4.1.0",
+    "@mantine/prism": "^4.1.0",
+    "@mdx-js/loader": "^2.1.0",
+    "@next/mdx": "^12.1.2",
     "date-fns": "^2.11.1",
     "gray-matter": "^4.0.2",
     "next": "latest",
+    "next-mdx-frontmatter": "^0.0.4",
+    "next-mdx-remote": "^4.0.2",
+    "nprogress": "^0.2.0",
+    "prism-react-renderer": "^1.3.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "remark": "^14.0.1",
-    "remark-html": "^15.0.0"
+    "react-live": "^2.4.1",
+    "react-spring": "^9.4.4",
+    "tabler-icons-react": "^1.42.0",
+    "use-sound": "^4.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.23",
+    "@types/react": "^17.0.43",
+    "typescript": "^4.6.3"
   }
 }

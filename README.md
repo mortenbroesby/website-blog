@@ -1,1 +1,3 @@
-This is a starter template for [Learn Next.js](https://nextjs.org/learn).
+This repository contains the code for http://morten.broesby.dk, at the time of writing (2022).
+
+It's built on Next.js, with React.

@@ -1,0 +1,81 @@
+---
+title: "How I Built My Blog"
+date: "2022-03-29"
+published: true
+---
+
+### Introduction
+
+Contempory tools and technologies within Frontend anno 2022 is honestly a jungle.
+
+When I was building this blog, my biggest priority was to find a solution that would leverage simplicity,
+but also let me embed totally custom content in each post.
+
+When using markdown or a rich-text editor in a CMS, it's not at all clear how to do this:
+you're generally limited to the handful of HTML elements that these tools can render to.
+
+#### The stack
+
+This blog is a Next.js application.
+
+I chose Next.js as it provides a great developer experience with all the features i needed.
+Hybrid static & server rendering, TypeScript support, smart bundling, route pre-fetching, and more.
+
+I deploy and host this blog on Vercel.
+
+Their hosting approach is hassle-less, and comes with a basic CI built-in.
+
+When it comes to the styling, I haven't yet fully decided.
+It's currently a tie between Stitches, Emotion and extending Mantine's theming, which uses Emotion below the hood.
+
+#### MDX to the rescue!
+
+MDX is great. It allows me to write in Markdown, and seamlessly integrate JSX components.
+It's an extension of Markdown that allows you to import and use custom React components.
+
+Even if you've never written Markdown, you've probably seen it before.
+It's a widely-used format — all those README.md files that are shown on Github repositories are Markdown!
+
+#### Markdown example
+
+##### Static code
+
+<Code
+  language="css"
+  code={`
+.wrapper {
+  width: 800px;
+  padding: 32px;
+}
+`}
+/>
+
+##### Editable code
+
+<EditableCode
+  language="css"
+  code={`
+.wrapper {
+  width: 800px;
+  padding: 32px;
+}
+`}
+/>
+
+#### Using MDX with Next.js
+
+On this blog, I currently use next-mdx-remote. I will probably switch to [mdx-bundler](https://github.com/kentcdodds/mdx-bundler)
+in the near future, as it offers many of the benefits of next-mdx-remote, but without the "no import" drawback.
+
+#### Mantine
+
+I chose to leverage Mantine, when initially building this blog.
+
+Mantine is a fully featured React component and hooks library. It allowed me to quickly setup this website.
+Over time, as I explore and find the page structure I want, I will build up bespoke components one-by-one.
+
+#### My future plans
+
+The plan is to write here any time I learn something new, or when I want to share things.
+
+Let's see how that goes ;-)
