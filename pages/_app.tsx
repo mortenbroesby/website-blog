@@ -42,8 +42,10 @@ const RootComponents = ({ Component, pageProps }) => {
 const AppWithMantine = (properties) => {
   const [colorScheme, setColorScheme] = useState<ColorScheme>("light");
 
-  const toggleColorScheme = (value?: ColorScheme) =>
-    setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
+  const toggleColorScheme = (value?: ColorScheme) => {
+    const targetValue = value || (colorScheme === "dark" ? "light" : "dark");
+    setColorScheme(targetValue);
+  };
 
   return (
     <ColorSchemeProvider
