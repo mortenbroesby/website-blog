@@ -24,7 +24,6 @@ const useStyles = createStyles((theme) => ({
     width: "100%",
     color: theme.colorScheme === "dark" ? theme.white : theme.black,
     fontFamily: "Inter, sans-serif",
-    fontFamilyMonospace: "Monaco, Courier, monospace",
   },
 }));
 

@@ -19,6 +19,11 @@ const useStyles = createStyles((theme) => ({
     alignItems: "center",
     width: "100%",
     gap: theme.spacing.sm,
+
+    "@media (max-width: 755px)": {
+      minWidth: "100%",
+      flexWrap: "wrap",
+    },
   },
 
   paragraph: {
@@ -31,6 +36,22 @@ const useStyles = createStyles((theme) => ({
 
   alignEnd: {
     marginLeft: "auto",
+
+    "@media (max-width: 755px)": {
+      minWidth: "100%",
+    },
+  },
+
+  separator: {
+    "@media (max-width: 755px)": {
+      display: "none",
+    },
+  },
+
+  date: {
+    "@media (max-width: 755px)": {
+      minWidth: "100%",
+    },
   },
 }));
 
@@ -51,8 +72,8 @@ interface MarkdownEntryProps {
 
 export const MarkdownEntry = (properties: MarkdownEntryProps) => {
   const { data, showReadTime = false } = properties;
-  const { classes } = useStyles();
 
+  const { classes } = useStyles();
   const { metadata, source, content } = data;
   const { title, date } = metadata;
 
@@ -69,8 +90,8 @@ export const MarkdownEntry = (properties: MarkdownEntryProps) => {
       <Box className={classes.description}>
         <Avatar src="/images/profile.jpeg" size="sm" radius="lg" />
         <Paragraph>Morten Broesby-Olsen</Paragraph>
-        <Paragraph>/</Paragraph>
-        <Paragraph>{parseDate(date)}</Paragraph>
+        <Paragraph className={classes.separator}>/</Paragraph>
+        <Paragraph className={classes.date}>{parseDate(date)}</Paragraph>
 
         {readTimeComponent}
       </Box>

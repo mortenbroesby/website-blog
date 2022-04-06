@@ -1,12 +1,11 @@
 import React from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { useMediaQuery } from "@mantine/hooks";
 
 import {
   createStyles,
   Header,
-  Container,
+  Box,
   Group,
   Burger,
   useMantineTheme,
@@ -27,11 +26,13 @@ const useStyles = createStyles((theme) => ({
     left: 0,
   },
 
-  inner: {
+  content: {
     height: HEADER_HEIGHT,
     display: "flex",
     alignItems: "center",
     justifyContent: "start",
+    maxWidth: 960,
+    margin: "0 auto",
   },
 
   menuEnd: {
@@ -47,25 +48,32 @@ const useStyles = createStyles((theme) => ({
   },
 
   menuLarge: {
-    [theme.fn.smallerThan("xs")]: {
+    "@media (max-width: 600px)": {
       display: "none",
     },
   },
 
   menuSmall: {
-    [theme.fn.largerThan("xs")]: {
+    "@media (min-width: 600px)": {
       display: "none",
     },
   },
 
   buttonContainer: {
     position: "relative",
+
+    "@media (max-width: 961px)": {
+      marginLeft: 20,
+    },
   },
 
   button: {
     fontSize: "18px",
     color: theme.colorScheme === "dark" ? theme.white : theme.black,
     fontWeight: 400,
+    padding: 10,
+    lineHeight: 1,
+    height: "auto",
 
     "&:hover": {
       background:
@@ -106,7 +114,6 @@ export function ApplicationHeader(properties: HeaderProps) {
   const router = useRouter();
   const theme = useMantineTheme();
   const { classes } = useStyles();
-  const largeScreen = useMediaQuery("(min-width: 576px)");
 
   const hasActiveRoute = (route: string, activeRoute: string): boolean => {
     const itemRoute = route.replace(/\//g, "");
@@ -142,11 +149,9 @@ export function ApplicationHeader(properties: HeaderProps) {
 
   return (
     <Header height={HEADER_HEIGHT} className={classes.header}>
-      <Container className={classes.inner} pl={largeScreen ? 0 : 20}>
+      <Box className={classes.content}>
         <Group className={classes.buttonContainer}>
-          <Group className={classes.menuLarge} spacing={0}>
-            {avaliableLinks}
-          </Group>
+          <Group className={classes.menuLarge}>{avaliableLinks}</Group>
 
           <Burger
             size="sm"
@@ -163,12 +168,12 @@ export function ApplicationHeader(properties: HeaderProps) {
 
         <div className={classes.menuEnd}>
           <Group>
-            <Group className={classes.menu}>
+            <Group className={classes.menu} mr={20}>
               <ColorToggle />
             </Group>
           </Group>
         </div>
-      </Container>
+      </Box>
     </Header>
   );
 }

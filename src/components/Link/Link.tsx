@@ -1,22 +1,33 @@
 import { FC } from "react";
-import { Anchor } from "@mantine/core";
-import Link from "next/link";
+import { Anchor, createStyles, Text } from "@mantine/core";
+import NextLink from "next/link";
 
 export interface LinkProps {
   title: string;
   href: string;
 }
 
-const LinkComponent: FC<LinkProps> = (properties) => {
+const useStyles = createStyles((theme) => ({
+  link: {
+    fontSize: 16,
+
+    "@media (max-width: 755px)": {
+      fontSize: 14,
+    },
+  },
+}));
+
+const Link: FC<LinkProps> = (properties) => {
   const { title, href, ...remainingProps } = properties;
+  const { classes } = useStyles();
 
   return (
-    <Link href={href}>
+    <NextLink href={href}>
       <Anchor href={href} {...remainingProps}>
-        {title}
+        <Text className={classes.link}>{title}</Text>
       </Anchor>
-    </Link>
+    </NextLink>
   );
 };
 
-export { LinkComponent as Link };
+export { Link };
