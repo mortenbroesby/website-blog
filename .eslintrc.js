@@ -21,31 +21,30 @@ module.exports = {
     "next",
     "prettier",
   ],
+
   parser: "@typescript-eslint/parser",
 
   parserOptions: {
+    ecmaVersion: 12,
+    sourceType: "module",
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: 12,
-    sourceType: "module",
   },
 
-  plugins: [
-    "react",
-    "@typescript-eslint",
-    "unused-imports",
-    "react-hooks",
-    "prettier",
-  ],
+  plugins: ["react", "@typescript-eslint", "unused-imports", "prettier"],
 
   rules: {
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "error",
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
     "unused-imports/no-unused-imports": "error",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-empty-function": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "@next/next/link-passhref": "off",
+
+    "no-duplicate-imports": "error",
   },
 };
