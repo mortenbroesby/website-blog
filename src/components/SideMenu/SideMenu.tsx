@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React, { useEffect, useRef } from "react";
 import {
   Box,
@@ -8,11 +9,12 @@ import {
 } from "@mantine/core";
 import { useScrollLock } from "@mantine/hooks";
 import { animated, Transition } from "react-spring";
+import { Sun, MoonStars } from "tabler-icons-react";
+import { useRouter } from "next/router";
 
 import { availablePages } from "~/data";
 import { useRefClicked } from "~/hooks";
-import { Link, HEADER_HEIGHT } from "~/components";
-import { Sun, MoonStars } from "tabler-icons-react";
+import { HEADER_HEIGHT } from "~/components";
 
 const useStyles = createStyles((theme, _params, getRef) => {
   const icon = getRef("icon");
@@ -80,6 +82,7 @@ const useStyles = createStyles((theme, _params, getRef) => {
       borderRadius: theme.radius.sm,
       fontWeight: 500,
       cursor: "pointer",
+      minWidth: "100%",
 
       "&:hover": {
         backgroundColor:
@@ -100,6 +103,7 @@ interface SideMenuProps {
 export function SideMenu(properties: SideMenuProps) {
   const { isOpen, onCloseMenu } = properties;
 
+  const router = useRouter();
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const [, setScrollLocked] = useScrollLock();
 
@@ -130,8 +134,32 @@ export function SideMenu(properties: SideMenuProps) {
     toggleColorScheme();
   };
 
+  const hasActiveRoute = (route: string, activeRoute: string): boolean => {
+    const itemRoute = route.replace(/\//g, "");
+    const targetRoute = activeRoute.replace(/\//g, "");
+
+    const hasActiveRoute = itemRoute !== "" && targetRoute.includes(itemRoute);
+    return hasActiveRoute;
+  };
+
   const avaliableLinks = availablePages.map(({ title, href }, index) => {
-    return <Link title={title} href={href} key={index} />;
+    const isActiveRoute =
+      hasActiveRoute(href, router.pathname) ||
+      (router.pathname === "/" && href === "/");
+
+    return (
+      <Link href={href} key={index}>
+        <a
+          className={classes.link}
+          style={{
+            textDecoration: isActiveRoute ? "underline" : "none",
+            fontWeight: isActiveRoute ? "bold" : "normal",
+          }}
+        >
+          {title}
+        </a>
+      </Link>
+    );
   });
 
   const toggleColorIcon =
@@ -152,8 +180,8 @@ export function SideMenu(properties: SideMenuProps) {
       <Navbar.Section className={classes.footer}>
         <Group direction="column">
           <a className={classes.link} onClick={toggleColor}>
-            <span>{toggleColorIcon}</span>
-            <span>{toggleColorText}</span>
+            {toggleColorIcon}
+            {toggleColorText}
           </a>
         </Group>
       </Navbar.Section>

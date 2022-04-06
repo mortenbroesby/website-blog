@@ -9,7 +9,6 @@ import {
   Group,
   Burger,
   useMantineTheme,
-  Button,
 } from "@mantine/core";
 
 import { ColorToggle } from "~/components";
@@ -68,18 +67,24 @@ const useStyles = createStyles((theme) => ({
   },
 
   button: {
-    fontSize: "18px",
-    color: theme.colorScheme === "dark" ? theme.white : theme.black,
+    fontSize: "16px",
+    color: theme.colorScheme === "dark" ? theme.white : theme.colors.gray[9],
     fontWeight: 400,
     padding: 10,
     lineHeight: 1,
     height: "auto",
+    cursor: "pointer",
+    borderRadius: "8px",
 
     "&:hover": {
       background:
         theme.colorScheme === "dark"
           ? theme.fn.rgba(theme.colors.gray[0], 0.4)
           : theme.fn.rgba(theme.colors.dark[0], 0.4),
+    },
+
+    "&:active": {
+      transform: "translateY(1px)",
     },
   },
 
@@ -132,17 +137,14 @@ export function ApplicationHeader(properties: HeaderProps) {
 
     return (
       <Link href={href} key={index}>
-        <Button
-          variant="subtle"
-          color={theme.colorScheme === "dark" ? "dark" : "dark"}
-          radius="md"
+        <Box
           className={classes.button}
           style={{
             fontWeight: isActiveRoute ? 700 : 400,
           }}
         >
           {title}
-        </Button>
+        </Box>
       </Link>
     );
   });
@@ -151,7 +153,9 @@ export function ApplicationHeader(properties: HeaderProps) {
     <Header height={HEADER_HEIGHT} className={classes.header}>
       <Box className={classes.content}>
         <Group className={classes.buttonContainer}>
-          <Group className={classes.menuLarge}>{avaliableLinks}</Group>
+          <Group className={classes.menuLarge} spacing={2}>
+            {avaliableLinks}
+          </Group>
 
           <Burger
             size="sm"
