@@ -17,8 +17,7 @@ export default function Tags() {
           <Breadcrumbs
             items={[
               { title: "Home", href: "/" },
-              { title: "About", href: "/about" },
-              { title: "Uses", href: "/about/uses" },
+              { title: "Uses", href: "/uses" },
             ]}
           />
 
