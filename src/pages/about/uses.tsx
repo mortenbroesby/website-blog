@@ -1,14 +1,16 @@
 import Head from "next/head";
-import { Container, Divider, Group } from "@mantine/core";
+import { Container } from "@mantine/core";
 
-import { Breadcrumbs, Card, Page } from "~/components";
+import { Breadcrumbs, Page } from "~/components";
+
+import Uses from "~/components/Uses/uses.mdx";
 
 export default function Tags() {
   return (
     <>
       <Page>
         <Head>
-          <title>Morten Broesby-Olsen :: About</title>
+          <title>Morten Broesby-Olsen :: Uses</title>
         </Head>
 
         <Container pt={20} pb={20}>
@@ -16,16 +18,11 @@ export default function Tags() {
             items={[
               { title: "Home", href: "/" },
               { title: "About", href: "/about" },
+              { title: "Uses", href: "/about/uses" },
             ]}
           />
 
-          <Divider mt={20} mb={20} />
-
-          <h1>About</h1>
-
-          <Group direction="column" mt={20}>
-            <Card title="Uses" href="/about/uses" date="2022-04-29" />
-          </Group>
+          <Uses />
         </Container>
       </Page>
     </>

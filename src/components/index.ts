@@ -1,5 +1,6 @@
 export * from "./AvatarLink";
 export * from "./Breadcrumbs";
+export * from "./Card";
 export * from "./Code";
 export * from "./ColorToggle";
 export * from "./Date";
