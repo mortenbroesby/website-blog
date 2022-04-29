@@ -1,16 +1,6 @@
-import { createStyles, Divider, Text } from "@mantine/core";
-import { MDXRemote } from "next-mdx-remote";
+import { Box, Avatar, Text, createStyles } from "@mantine/core";
 
-import { ContentData } from "~/lib";
-import { calculateReadTime } from "~/utils";
-
-import { Code, EditableCode } from "~/components";
-import { MarkdownHeader } from "./MarkdownHeader";
-
-const components = {
-  Code,
-  EditableCode,
-};
+import { parseDate } from "~/utils";
 
 const useStyles = createStyles((theme) => ({
   description: {
@@ -66,33 +56,17 @@ const Paragraph = ({ children, ...remainingProps }) => {
   );
 };
 
-interface MarkdownEntryProps {
-  data: ContentData;
-  showReadTime?: boolean;
-}
-
-export const MarkdownEntry = (properties: MarkdownEntryProps) => {
-  const { data, showReadTime = false } = properties;
-
+export const MarkdownHeader = ({ date, children }) => {
   const { classes } = useStyles();
-  const { metadata, source, content } = data;
-  const { title, date } = metadata;
-
-  const readTime = calculateReadTime(content);
-
-  const readTimeComponent = showReadTime ? (
-    <Paragraph className={classes.alignEnd}>{readTime} min read</Paragraph>
-  ) : null;
 
   return (
-    <>
-      <h1>{title}</h1>
+    <Box className={classes.description}>
+      <Avatar src="/images/profile.jpeg" size="sm" radius="lg" />
+      <Paragraph>Morten Broesby-Olsen</Paragraph>
+      <Paragraph className={classes.separator}>/</Paragraph>
+      <Paragraph className={classes.date}>{parseDate(date)}</Paragraph>
 
-      <MarkdownHeader date={date}>{readTimeComponent}</MarkdownHeader>
-
-      <Divider />
-
-      <MDXRemote {...source} components={components} />
-    </>
+      {children}
+    </Box>
   );
 };

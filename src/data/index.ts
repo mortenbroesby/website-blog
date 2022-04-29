@@ -16,4 +16,8 @@ export const availablePages: PageProps[] = [
     title: "Snippets",
     href: "/snippets",
   },
+  {
+    title: "About",
+    href: "/about",
+  },
 ];

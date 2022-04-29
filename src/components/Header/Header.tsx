@@ -128,12 +128,11 @@ export function ApplicationHeader(properties: HeaderProps) {
     return hasActiveRoute;
   };
 
-  const avaliableLinks = availablePages.map((properties, index) => {
+  const availableLinks = availablePages.map((properties, index) => {
     const { title, href } = properties;
 
-    const isActiveRoute =
-      hasActiveRoute(href, router.pathname) ||
-      (router.pathname === "/" && href === "/");
+    const isHomeRoute = router.pathname === "/" && href === "/";
+    const isActiveRoute = hasActiveRoute(href, router.pathname) || isHomeRoute;
 
     return (
       <Link href={href} key={index}>
@@ -154,7 +153,7 @@ export function ApplicationHeader(properties: HeaderProps) {
       <Box className={classes.content}>
         <Group className={classes.buttonContainer}>
           <Group className={classes.menuLarge} spacing={2}>
-            {avaliableLinks}
+            {availableLinks}
           </Group>
 
           <Burger

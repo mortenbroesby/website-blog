@@ -142,10 +142,9 @@ export function SideMenu(properties: SideMenuProps) {
     return hasActiveRoute;
   };
 
-  const avaliableLinks = availablePages.map(({ title, href }, index) => {
-    const isActiveRoute =
-      hasActiveRoute(href, router.pathname) ||
-      (router.pathname === "/" && href === "/");
+  const availableLinks = availablePages.map(({ title, href }, index) => {
+    const isHomeRoute = router.pathname === "/" && href === "/";
+    const isActiveRoute = hasActiveRoute(href, router.pathname) || isHomeRoute;
 
     return (
       <Link href={href} key={index}>
@@ -174,7 +173,7 @@ export function SideMenu(properties: SideMenuProps) {
   const navbar = (
     <Navbar width={{ xs: 300 }} p="md" className={classes.menu}>
       <Navbar.Section>
-        <Group direction="column">{avaliableLinks}</Group>
+        <Group direction="column">{availableLinks}</Group>
       </Navbar.Section>
 
       <Navbar.Section className={classes.footer}>

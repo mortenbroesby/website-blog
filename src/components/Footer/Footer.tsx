@@ -95,8 +95,8 @@ export function Footer() {
   return (
     <footer className={classes.footer}>
       <Container className={classes.afterFooter}>
-        <Text color="dimmed" size="sm">
-          © 2022 Morten Broesby-Olsen. All rights reserved.
+        <Text color="dimmed" size="xs">
+          © 2022-present Morten Broesby-Olsen. All rights reserved.
         </Text>
 
         <Group spacing={4} className={classes.social} position="right" noWrap>
