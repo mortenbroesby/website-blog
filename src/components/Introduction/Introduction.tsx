@@ -19,14 +19,19 @@ export const Introduction = () => {
     <Box>
       <Group>
         <Box>
-          <h2>Hey there! - I'm Morten 👋</h2>
+          <h2>Hey there! - I'm Morten Broesby-Olsen 👋</h2>
 
-          <p>"Danish guy with an international mindset."</p>
           <p>
-            I was born in Denmark - and I currently live in the Netherlands.
+            <i>"A Danish guy with an international mindset."</i>
           </p>
-          <h3>What do I like?</h3>
 
+          <p>I'm a software engineer with a passion for web technologies 🚀.</p>
+
+          <p>I love teaching and helping people, and learning new things.</p>
+
+          <p>I'm also a father and husband 👨‍👩‍👦.</p>
+
+          <h3>What do I like?</h3>
           <ul>
             <li>Programming 💻</li>
             <li>Skateboarding and longboarding 🛹</li>
