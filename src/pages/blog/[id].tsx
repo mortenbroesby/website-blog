@@ -18,7 +18,7 @@ export default function Post({ data }: { data: ContentData }) {
         <Breadcrumbs
           items={[
             { title: "Home", href: "/" },
-            { title: "Blog", href: "/blog" },
+            { title: "Tech Blog", href: "/blog" },
             { title: title, href: `/blog/${id}` },
           ]}
         />

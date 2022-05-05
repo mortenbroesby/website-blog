@@ -100,6 +100,10 @@ const RootComponents = ({ Component, pageProps }) => {
             WebkitFontSmoothing: "antialiased",
             WebkitTextSizeAdjust: "100%",
             lineHeight: "1.5",
+
+            [theme.fn.largerThan("sm")]: {
+              overflowY: "scroll",
+            },
           },
 
           "#nprogress": {

@@ -9,12 +9,8 @@ export const AVAILABLE_PAGES: PageProps[] = [
     href: "/",
   },
   {
-    title: "Blog",
+    title: "Tech Blog",
     href: "/blog",
-  },
-  {
-    title: "Snippets",
-    href: "/snippets",
   },
   {
     title: "Uses",
