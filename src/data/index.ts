@@ -3,7 +3,7 @@ export interface PageProps {
   href: string;
 }
 
-export const availablePages: PageProps[] = [
+export const AVAILABLE_PAGES: PageProps[] = [
   {
     title: "Home",
     href: "/",

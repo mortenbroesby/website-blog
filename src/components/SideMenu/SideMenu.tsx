@@ -12,7 +12,7 @@ import { animated, Transition } from "react-spring";
 import { Sun, MoonStars } from "tabler-icons-react";
 import { useRouter } from "next/router";
 
-import { availablePages } from "~/data";
+import { AVAILABLE_PAGES } from "~/data";
 import { useRefClicked } from "~/hooks";
 import { HEADER_HEIGHT } from "~/components";
 
@@ -142,7 +142,7 @@ export function SideMenu(properties: SideMenuProps) {
     return hasActiveRoute;
   };
 
-  const availableLinks = availablePages.map(({ title, href }, index) => {
+  const availableLinks = AVAILABLE_PAGES.map(({ title, href }, index) => {
     const isHomeRoute = router.pathname === "/" && href === "/";
     const isActiveRoute = hasActiveRoute(href, router.pathname) || isHomeRoute;
 

@@ -13,7 +13,7 @@ import {
 
 import { ColorToggle } from "~/components";
 
-import { availablePages } from "~/data";
+import { AVAILABLE_PAGES } from "~/data";
 import { noop } from "~/utils";
 
 export const HEADER_HEIGHT = 84;
@@ -128,7 +128,7 @@ export function ApplicationHeader(properties: HeaderProps) {
     return hasActiveRoute;
   };
 
-  const availableLinks = availablePages.map((properties, index) => {
+  const availableLinks = AVAILABLE_PAGES.map((properties, index) => {
     const { title, href } = properties;
 
     const isHomeRoute = router.pathname === "/" && href === "/";
