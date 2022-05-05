@@ -43,13 +43,13 @@ export default function Blog({
 
         <Divider mt={20} mb={20} />
 
-        <h2>Blog Posts</h2>
+        <h2>Blog Posts 📖</h2>
 
         <Group direction="column" mt={20}>
           {blogPostCards}
         </Group>
 
-        <h2>Code Snippets</h2>
+        <h2>Code Snippets 💾</h2>
 
         <Group direction="column" mt={20}>
           {snippetCards}
