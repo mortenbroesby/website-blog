@@ -5,21 +5,19 @@ import { Breadcrumbs, Page } from "~/components";
 
 export default function Tags() {
   return (
-    <>
-      <Page>
-        <Head>
-          <title>Morten Broesby-Olsen :: Tags</title>
-        </Head>
+    <Page>
+      <Head>
+        <title>Morten Broesby-Olsen :: Tags</title>
+      </Head>
 
-        <Container pt={20} pb={20}>
-          <Breadcrumbs
-            items={[
-              { title: "Home", href: "/" },
-              { title: "Tags", href: "/tags" },
-            ]}
-          />
-        </Container>
-      </Page>
-    </>
+      <Container pt={20} pb={20}>
+        <Breadcrumbs
+          items={[
+            { title: "Home", href: "/" },
+            { title: "Tags", href: "/tags" },
+          ]}
+        />
+      </Container>
+    </Page>
   );
 }

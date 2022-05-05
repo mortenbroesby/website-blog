@@ -7,23 +7,21 @@ import Uses from "~/components/Uses/uses.mdx";
 
 export default function Tags() {
   return (
-    <>
-      <Page>
-        <Head>
-          <title>Morten Broesby-Olsen :: Uses</title>
-        </Head>
+    <Page>
+      <Head>
+        <title>Morten Broesby-Olsen :: Uses</title>
+      </Head>
 
-        <Container pt={20} pb={20}>
-          <Breadcrumbs
-            items={[
-              { title: "Home", href: "/" },
-              { title: "Uses", href: "/uses" },
-            ]}
-          />
+      <Container pt={20} pb={20}>
+        <Breadcrumbs
+          items={[
+            { title: "Home", href: "/" },
+            { title: "Uses", href: "/uses" },
+          ]}
+        />
 
-          <Uses />
-        </Container>
-      </Page>
-    </>
+        <Uses />
+      </Container>
+    </Page>
   );
 }
