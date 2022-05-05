@@ -37,7 +37,7 @@ export default function Blog({
         <Breadcrumbs
           items={[
             { title: "Home", href: "/" },
-            { title: "Tech Blog", href: "/blog" },
+            { title: "Blog", href: "/blog" },
           ]}
         />
 
