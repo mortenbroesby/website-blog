@@ -44,7 +44,7 @@ export default function Snippets({ data }: { data: Metadata[] }) {
 
         <Divider mt={20} mb={20} />
 
-        <h1>Snippets</h1>
+        <h2>Code Snippets 💾</h2>
 
         <Group direction="column" mt={20}>
           {snippetCards}
