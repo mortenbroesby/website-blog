@@ -3,24 +3,24 @@ import { Container } from "@mantine/core";
 
 import { Breadcrumbs, Page } from "~/components";
 
-import Uses from "~/components/Content/uses.mdx";
+import AboutMe from "~/components/Content/about-me.mdx";
 
 export default function Tags() {
   return (
     <Page>
       <Head>
-        <title>Morten Broesby-Olsen :: Uses</title>
+        <title>Morten Broesby-Olsen :: About Me</title>
       </Head>
 
       <Container pt={20} pb={20}>
         <Breadcrumbs
           items={[
             { title: "Home", href: "/" },
-            { title: "Uses", href: "/uses" },
+            { title: "About me", href: "/about-me" },
           ]}
         />
 
-        <Uses />
+        <AboutMe />
       </Container>
     </Page>
   );
