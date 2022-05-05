@@ -127,7 +127,7 @@ const RootComponents = ({ Component, pageProps }) => {
   );
 };
 
-const TrackingProvider = ({ Component, pageProps }) => {
+const TrackingProvider = (properties: ApplicationProps) => {
   const router = useRouter();
 
   useEffect(() => {
@@ -166,7 +166,7 @@ const TrackingProvider = ({ Component, pageProps }) => {
           `,
         }}
       />
-      <Component {...pageProps} />
+      <RootComponents {...properties} />
     </>
   );
 };
@@ -216,7 +216,7 @@ const Application = (properties: ApplicationProps) => {
         }}
       >
         <TypographyStylesProvider>
-          <RootComponents {...properties} />
+          <TrackingProvider {...properties} />
         </TypographyStylesProvider>
       </MantineProvider>
     </ColorSchemeProvider>
