@@ -70,11 +70,13 @@ class TokenBucket {
 
 <br />
 
-If we implement the Token Bucket strategy to rate limit an API, then it allows us to set a request rate
-- i.e. the rate at which tokens are added to the bucket - with the ability to burst above this rate for
-a short period, until we have drained the capacity of the bucket.
+If we implement the Token Bucket strategy to rate limit an API, then it allows us to set a request rate, i.e. the rate at which tokens are added to the bucket,
+with the ability to burst above this rate for a short period, until we have drained the capacity of the bucket.
 
 The implementation can of course be tweaked to automatically re-fill at set times or intervals as well, depending on our needs.
 
 In any case, by using this Token Bucket strategy, we are able to pre-fill a bucket of requests that stays below the rate-limit
-of a previously mentioned SAAS product. The user are able to use our website just like they were before, and once our bucket is empty, we just fall back to the normal API call.
+of a previously mentioned SAAS product.
+
+The user are able to use our website just like they were before, and once our bucket is empty, we just fall back to the normal API call.
+
