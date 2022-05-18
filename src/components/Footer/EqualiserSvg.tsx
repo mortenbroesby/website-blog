@@ -1,20 +1,20 @@
 import { createStyles, keyframes } from "@mantine/core";
 
-const bounce = keyframes({
-  "from, 0%": {
-    height: "3px",
+const shortEqualiser = keyframes({
+  "from, 0%, to": {
+    height: "8px",
   },
-  "30%": {
+  "50%": {
+    height: "4px",
+  },
+});
+
+const tallEqualiser = keyframes({
+  "from, 0%, to": {
     height: "16px",
   },
-  "60%": {
-    transform: "8px",
-  },
-  "80%": {
-    transform: "12px",
-  },
-  "100%, to": {
-    height: "9px",
+  "50%": {
+    height: "6px",
   },
 });
 
@@ -22,19 +22,19 @@ const useStyles = createStyles((theme) => ({
   bar: {
     transform: "scale(1, -1) translate(0, -24px)",
     animationDelay: "0s",
-    animationDuration: "2.2s",
+    animationDuration: "1s",
     animationIterationCount: "infinite",
   },
   bar__1: {
-    animationName: `${bounce}`,
+    animationName: `${shortEqualiser}`,
   },
   bar__2: {
-    animationName: `${bounce}`,
-    animationDelay: "0.726s",
+    animationName: `${tallEqualiser}`,
+    animationDelay: "0.33s",
   },
   bar__3: {
-    animationName: `${bounce}`,
-    animationDelay: "1.452s",
+    animationName: `${shortEqualiser}`,
+    animationDelay: "0.66s",
   },
 }));
 
