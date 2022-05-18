@@ -21,11 +21,6 @@ export const SpotifyProvider = ({ children }: any) => {
       const response = await axios.get("/api/now-playing");
 
       const { nowPlaying } = response?.data ?? {};
-      const { isPlaying } = nowPlaying ?? {};
-
-      console.log(
-        `Currently playing: ${isPlaying ? nowPlaying.title : "Nothing"}`
-      );
 
       setNowPlaying(nowPlaying);
     } catch (error) {
