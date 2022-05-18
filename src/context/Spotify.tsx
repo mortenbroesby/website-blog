@@ -1,25 +1,26 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
-import { getDefaultNowPlaying, NowPlaying, TopTrack } from "~/data";
+import { getDefaultNowPlaying, NowPlaying, Track } from "~/data";
+import { getRandomItemFromArray } from "~/utils";
 
 interface ContextProps {
   nowPlaying: NowPlaying;
-  topTracks: TopTrack[];
+  lastPlayed: Track;
+  recentlyPlayed: Track[];
 }
 
 const SpotifyContext = createContext({} as ContextProps);
 
-export const SpotifyProvider = ({ children }: any) => {
-  const [nowPlaying, setNowPlaying] = useState<NowPlaying>(
-    getDefaultNowPlaying()
-  );
+const defaultNowPlaying = getDefaultNowPlaying();
 
-  const [topTracks, setTopTracks] = useState<TopTrack[]>([]);
+export const SpotifyProvider = ({ children }: any) => {
+  const [nowPlaying, setNowPlaying] = useState<NowPlaying>(defaultNowPlaying);
+  const [lastPlayed, setLastPlayed] = useState<Track>(defaultNowPlaying.track);
+  const [recentlyPlayed, setRecentlyPlayed] = useState<Track[]>([]);
 
   const fetchNowPlaying = async () => {
     try {
       const response = await axios.get("/api/now-playing");
-
       const { nowPlaying } = response?.data ?? {};
 
       setNowPlaying(nowPlaying);
@@ -28,34 +29,47 @@ export const SpotifyProvider = ({ children }: any) => {
     }
   };
 
-  const fetchTopTracks = async () => {
+  const fetchRecentlyPlayed = async () => {
     try {
-      const response = await axios.get("/api/top-tracks");
+      const response = await axios.get("/api/recently-played");
+      const { tracks = [] } = response?.data ?? {};
+      const lastPlayed = getRandomItemFromArray(tracks);
 
-      const { tracks } = response?.data ?? {};
-
-      setTopTracks(tracks);
+      setRecentlyPlayed(tracks);
+      setLastPlayed(lastPlayed);
     } catch (error) {
       console.log(error);
     }
   };
 
   useEffect(() => {
-    let timer;
+    let nowPlayingTimer;
+    let recentlyPlayedTimer;
 
-    const fetchWithTimeout = async () => {
+    const fetchNowPlayingJob = async () => {
       await fetchNowPlaying();
 
-      clearTimeout(timer);
-      timer = setTimeout(() => {
-        fetchWithTimeout();
-      }, 3000);
+      clearTimeout(nowPlayingTimer);
+      nowPlayingTimer = setTimeout(() => {
+        fetchNowPlayingJob();
+      }, 3 * 1000);
     };
 
-    fetchWithTimeout();
+    const fetchRecentlyPlayedJob = async () => {
+      await fetchRecentlyPlayed();
+
+      clearTimeout(recentlyPlayedTimer);
+      recentlyPlayedTimer = setTimeout(() => {
+        fetchNowPlayingJob();
+      }, 60 * 1000);
+    };
+
+    fetchNowPlayingJob();
+    fetchRecentlyPlayedJob();
 
     return () => {
-      clearTimeout(timer);
+      clearTimeout(nowPlayingTimer);
+      clearTimeout(recentlyPlayedTimer);
     };
   }, []);
 
@@ -63,7 +77,8 @@ export const SpotifyProvider = ({ children }: any) => {
     <SpotifyContext.Provider
       value={{
         nowPlaying,
-        topTracks,
+        lastPlayed,
+        recentlyPlayed,
       }}
     >
       {children}

@@ -20,27 +20,23 @@ export const AVAILABLE_PAGES: PageProps[] = [
 
 export interface NowPlaying {
   isPlaying: boolean;
-  title: string;
-  artist: string;
-  album: string;
-  albumImageUrl: string;
-  songUrl: string;
+  track: Track;
 }
 
 export const getDefaultNowPlaying = () => {
   const defaultProps = {
     isPlaying: false,
-    title: "Unknown track",
-    artist: "Spotify",
-    album: "",
-    albumImageUrl: "",
-    songUrl: "",
+    track: {
+      title: "Unknown track",
+      artist: "Spotify",
+      songUrl: "https://open.spotify.com/",
+    },
   };
 
   return defaultProps;
 };
 
-export interface TopTrack {
+export interface Track {
   title: string;
   artist: string;
   songUrl: string;

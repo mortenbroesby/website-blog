@@ -105,3 +105,11 @@ export function calculateReadTime(content: string): number {
   const minutes = Math.ceil(((words - imageAdjust) / WPS + imageSecs) / 60);
   return minutes;
 }
+
+export function delay(milliseconds: number) {
+  return new Promise((resolve) => setTimeout(resolve, milliseconds));
+}
+
+export function getRandomItemFromArray<T extends any[]>(array: T) {
+  return array[Math.floor(Math.random() * array.length)];
+}

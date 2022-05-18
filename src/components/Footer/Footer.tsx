@@ -115,6 +115,7 @@ const useStyles = createStyles((theme) => ({
     alignItems: "center",
     flex: 1,
     paddingBottom: 20,
+    fontSize: theme.fontSizes.xs,
 
     [theme.fn.smallerThan("sm")]: {
       flexDirection: "column",
@@ -169,11 +170,20 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
+const lastFallback = {
+  title: "Not Playing",
+  artist: "Spotify",
+};
+
 export function Footer() {
   const { classes } = useStyles();
-  const { nowPlaying } = useSpotify();
+  const { nowPlaying, lastPlayed } = useSpotify();
 
-  const { isPlaying, title, artist } = nowPlaying;
+  const { isPlaying, track: currentTrack } = nowPlaying;
+  const fallbackTrack = lastPlayed ?? lastFallback;
+
+  const displayTitle = isPlaying ? currentTrack.title : fallbackTrack.title;
+  const displayArtist = isPlaying ? currentTrack.artist : fallbackTrack.artist;
 
   const playingIcon = isPlaying ? (
     <EqualiserSvg className={classes.playingIcon} />
@@ -184,9 +194,10 @@ export function Footer() {
   const playingElement = (
     <div className={classes.inline}>
       {playingIcon}
-      <Text>{isPlaying ? title : "Not Playing"}</Text>
+      {isPlaying ? "Currently playing: " : "Last played: "}
+      {displayTitle}
       <span className={classes.spacer}>—</span>
-      <span className={classes.artist}>{isPlaying ? artist : "Spotify"}</span>
+      <span className={classes.artist}>{displayArtist}</span>
     </div>
   );
 

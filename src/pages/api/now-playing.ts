@@ -21,18 +21,16 @@ export default async function fetchNowPlaying(
   const isPlaying = song?.is_playing;
   const title = song?.item?.name;
   const artist = song?.item?.artists?.map((_artist) => _artist.name).join(", ");
-  const album = song?.item?.album?.name;
-  const albumImageUrl = song?.item?.album?.images?.[0]?.url;
-  const songUrl = song?.item?.external_urls?.spotify;
 
   return res.status(200).json({
     nowPlaying: {
       isPlaying: isPlaying ?? defaultProps.isPlaying,
-      title: title ?? defaultProps.title,
-      artist: artist ?? defaultProps.artist,
-      album: album ?? defaultProps.album,
-      albumImageUrl: albumImageUrl ?? defaultProps.albumImageUrl,
-      songUrl: songUrl ?? defaultProps.songUrl,
+      track: {
+        title: title ?? defaultProps.track.title,
+        artist: artist ?? defaultProps.track.artist,
+        songUrl:
+          song?.item?.external_urls?.spotify ?? defaultProps.track.songUrl,
+      },
     },
   });
 }
