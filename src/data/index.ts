@@ -30,7 +30,7 @@ export interface NowPlaying {
 export const getDefaultNowPlaying = () => {
   const defaultProps = {
     isPlaying: false,
-    title: "Not Playing",
+    title: "Unknown track",
     artist: "Spotify",
     album: "",
     albumImageUrl: "",

@@ -22,12 +22,7 @@ export const SpotifyProvider = ({ children }: any) => {
 
       const { nowPlaying } = response?.data ?? {};
 
-      const updatedState = {
-        ...getDefaultNowPlaying(),
-        ...nowPlaying,
-      };
-
-      setNowPlaying(updatedState);
+      setNowPlaying(nowPlaying);
     } catch (error) {
       console.log(error);
     }

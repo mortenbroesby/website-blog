@@ -2,7 +2,6 @@ import Head from "next/head";
 import { Container } from "@mantine/core";
 
 import { Breadcrumbs, Page } from "~/components";
-import { getNowPlaying } from "~/lib";
 
 export default function Playground({ nowPlaying }) {
   return (
@@ -21,24 +20,4 @@ export default function Playground({ nowPlaying }) {
       </Container>
     </Page>
   );
-}
-
-export async function getStaticProps() {
-  const response = await getNowPlaying();
-
-  if (response.status === 204 || response.status > 400) {
-    return {
-      props: {
-        nowPlaying: {
-          isPlaying: false,
-        },
-      },
-    };
-  }
-
-  return {
-    props: {
-      nowPlaying: await response.json(),
-    },
-  };
 }

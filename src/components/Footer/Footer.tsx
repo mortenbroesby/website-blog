@@ -184,9 +184,9 @@ export function Footer() {
   const playingElement = (
     <div className={classes.inline}>
       {playingIcon}
-      <Text>{title}</Text>
+      <Text>{isPlaying ? title : "Not Playing"}</Text>
       <span className={classes.spacer}>—</span>
-      <span className={classes.artist}>{artist}</span>
+      <span className={classes.artist}>{isPlaying ? artist : "Spotify"}</span>
     </div>
   );
 
