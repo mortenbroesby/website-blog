@@ -19,7 +19,9 @@ export const Introduction = () => {
     <Box>
       <Group>
         <Box>
-          <h2>Hey there! - I'm Morten Broesby-Olsen 👋</h2>
+          <h2>Hey there 👋</h2>
+
+          <p>I'm Morten Broesby-Olsen.</p>
 
           <p>
             <i>"A Danish guy with an international mindset."</i>
