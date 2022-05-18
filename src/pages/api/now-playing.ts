@@ -12,7 +12,6 @@ export default async function fetchNowPlaying(
   const infoNotAvailable = response.status === 204 || response.status > 400;
   if (infoNotAvailable) {
     return res.status(200).json({
-      status: response.status,
       nowPlaying: defaultProps,
     });
   }
@@ -27,7 +26,6 @@ export default async function fetchNowPlaying(
   const songUrl = song?.item?.external_urls?.spotify;
 
   return res.status(200).json({
-    status: response.status,
     nowPlaying: {
       isPlaying: isPlaying ?? defaultProps.isPlaying,
       title: title ?? defaultProps.title,

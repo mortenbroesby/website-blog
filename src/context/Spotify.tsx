@@ -1,9 +1,10 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
-import { getDefaultNowPlaying, NowPlaying } from "~/data";
+import { getDefaultNowPlaying, NowPlaying, TopTrack } from "~/data";
 
 interface ContextProps {
   nowPlaying: NowPlaying;
+  topTracks: TopTrack[];
 }
 
 const SpotifyContext = createContext({} as ContextProps);
@@ -13,9 +14,11 @@ export const SpotifyProvider = ({ children }: any) => {
     getDefaultNowPlaying()
   );
 
+  const [topTracks, setTopTracks] = useState<TopTrack[]>([]);
+
   const fetchNowPlaying = async () => {
     try {
-      const response = await axios.get("/api/spotify");
+      const response = await axios.get("/api/now-playing");
 
       const { nowPlaying } = response?.data ?? {};
 
@@ -30,6 +33,18 @@ export const SpotifyProvider = ({ children }: any) => {
     }
   };
 
+  const fetchTopTracks = async () => {
+    try {
+      const response = await axios.get("/api/top-tracks");
+
+      const { tracks } = response?.data ?? {};
+
+      setTopTracks(tracks);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     fetchNowPlaying();
   }, []);
@@ -38,6 +53,7 @@ export const SpotifyProvider = ({ children }: any) => {
     <SpotifyContext.Provider
       value={{
         nowPlaying,
+        topTracks,
       }}
     >
       {children}

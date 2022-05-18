@@ -171,7 +171,6 @@ const useStyles = createStyles((theme) => ({
 
 export function Footer() {
   const { classes } = useStyles();
-
   const { nowPlaying } = useSpotify();
 
   const { isPlaying, title, artist } = nowPlaying;

@@ -39,3 +39,9 @@ export const getDefaultNowPlaying = () => {
 
   return defaultProps;
 };
+
+export interface TopTrack {
+  title: string;
+  artist: string;
+  songUrl: string;
+}
