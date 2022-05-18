@@ -65,18 +65,58 @@ class TokenBucket {
     this.lastFilled = now;
   }
 }
+
+export const tokenBucket = new TokenBucket(100, 1);
 `}
 />
 
 <br />
 
-If we implement the Token Bucket strategy to rate limit an API, then it allows us to set a request rate, i.e. the rate at which tokens are added to the bucket,
+Then, in a Node environment, you can configure an endpoint to use the token bucket:
+
+<EditableCode
+  language="typescript"
+  code={`
+const express = require('express');
+const app = express();
+
+function limitRequests(perSecond: number, maxBurst: number) {
+  const bucket = new TokenBucket(maxBurst, perSecond);
+
+  // Return an Express middleware function
+  return function limitRequestsMiddleware(request, response, next) {
+    const hasValidToken = bucket.take()
+    if (hasValidToken) {
+      return next();
+    }
+
+    response.status(429).send('Rate limit exceeded');
+  }
+}
+
+// Apply rate limiting middleware
+app.get('/',
+  limitRequests(5, 10),
+  (request, response) => {
+    response.send('Hello from this rate limited API');
+  }
+);
+
+// Setup application
+app.listen(8080);
+`}
+/>
+
+<br />
+
+If we implement the Token Bucket strategy to rate limit an API, it'll allow us to set a request rate, i.e. the rate at which tokens are added to the bucket,
 with the ability to burst above this rate for a short period, until we have drained the capacity of the bucket.
 
-The implementation can of course be tweaked to automatically re-fill at set times or intervals as well, depending on our needs.
+The implementation can of course be tweaked to automatically re-fill at a set interval, depending on our needs.
 
 In any case, by using this Token Bucket strategy, we are able to pre-fill a bucket of requests that stays below the rate-limit
 of a previously mentioned SAAS product.
 
 The user are able to use our website just like they were before, and once our bucket is empty, we just fall back to the normal API call.
 
+Thank you for reading!
