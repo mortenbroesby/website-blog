@@ -127,6 +127,11 @@ const useStyles = createStyles((theme) => ({
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    maxWidth: "100vw",
+    textAlign: "start",
   },
 
   container: {
@@ -151,12 +156,16 @@ const useStyles = createStyles((theme) => ({
     marginRight: 6,
     width: 26,
     height: 26,
+    minWidth: 26,
+    minHeight: 26,
   },
 
   playingIcon: {
     marginRight: 6,
     width: 22,
     height: 26,
+    minWidth: 26,
+    minHeight: 26,
     fill: "orange",
   },
 
