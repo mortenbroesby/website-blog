@@ -186,7 +186,10 @@ export function Footer() {
   const displayArtist = isPlaying ? currentTrack.artist : fallbackTrack.artist;
 
   const playingIcon = isPlaying ? (
-    <EqualiserSvg className={classes.playingIcon} />
+    <>
+      <SpotifySvg className={classes.spotifyIcon} />
+      <EqualiserSvg className={classes.playingIcon} />
+    </>
   ) : (
     <SpotifySvg className={classes.spotifyIcon} />
   );
