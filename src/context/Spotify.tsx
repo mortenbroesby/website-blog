@@ -21,6 +21,11 @@ export const SpotifyProvider = ({ children }: any) => {
       const response = await axios.get("/api/now-playing");
 
       const { nowPlaying } = response?.data ?? {};
+      const { isPlaying } = nowPlaying ?? {};
+
+      console.log(
+        `Currently playing: ${isPlaying ? nowPlaying.title : "Nothing"}`
+      );
 
       setNowPlaying(nowPlaying);
     } catch (error) {
@@ -41,7 +46,22 @@ export const SpotifyProvider = ({ children }: any) => {
   };
 
   useEffect(() => {
-    fetchNowPlaying();
+    let timer;
+
+    const fetchWithTimeout = async () => {
+      await fetchNowPlaying();
+
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        fetchWithTimeout();
+      }, 3000);
+    };
+
+    fetchWithTimeout();
+
+    return () => {
+      clearTimeout(timer);
+    };
   }, []);
 
   return (
