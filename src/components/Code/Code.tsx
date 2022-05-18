@@ -11,6 +11,11 @@ const useStyles = createStyles((theme) => ({
       theme.colorScheme === "dark"
         ? theme.fn.rgba(theme.colors.gray[0], 0.4)
         : theme.fn.rgba(theme.colors.dark[0], 0.4),
+
+    marginTop: 0,
+    [theme.fn.smallerThan("md")]: {
+      marginTop: 32,
+    },
   },
 
   label: {
