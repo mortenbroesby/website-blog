@@ -4,6 +4,7 @@ import { getDefaultNowPlaying, NowPlaying, Track } from "~/data";
 import { getRandomItemFromArray } from "~/utils";
 
 interface ContextProps {
+  isLoading: boolean;
   nowPlaying: NowPlaying;
   lastPlayed: Track;
   recentlyPlayed: Track[];
@@ -14,6 +15,7 @@ const SpotifyContext = createContext({} as ContextProps);
 const defaultNowPlaying = getDefaultNowPlaying();
 
 export const SpotifyProvider = ({ children }: any) => {
+  const [isLoading, setIsLoading] = useState(true);
   const [nowPlaying, setNowPlaying] = useState<NowPlaying>(defaultNowPlaying);
   const [lastPlayed, setLastPlayed] = useState<Track>(defaultNowPlaying.track);
   const [recentlyPlayed, setRecentlyPlayed] = useState<Track[]>([]);
@@ -24,6 +26,7 @@ export const SpotifyProvider = ({ children }: any) => {
       const { nowPlaying } = response?.data ?? {};
 
       setNowPlaying(nowPlaying);
+      setIsLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -76,6 +79,7 @@ export const SpotifyProvider = ({ children }: any) => {
   return (
     <SpotifyContext.Provider
       value={{
+        isLoading,
         nowPlaying,
         lastPlayed,
         recentlyPlayed,

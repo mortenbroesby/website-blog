@@ -177,7 +177,7 @@ const lastFallback = {
 
 export function Footer() {
   const { classes } = useStyles();
-  const { nowPlaying, lastPlayed } = useSpotify();
+  const { isLoading, nowPlaying, lastPlayed } = useSpotify();
 
   const { isPlaying, track: currentTrack } = nowPlaying;
   const fallbackTrack = lastPlayed ?? lastFallback;
@@ -208,7 +208,9 @@ export function Footer() {
     <footer className={classes.footer}>
       <Container className={classes.afterFooter}>
         <div className={classes.container}>
-          <div className={classes.nowPlaying}>{playingElement}</div>
+          {isLoading ? null : (
+            <div className={classes.nowPlaying}>{playingElement}</div>
+          )}
 
           <div className={classes.content}>
             <Text color="dimmed" size="xs">
