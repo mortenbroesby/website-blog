@@ -175,11 +175,15 @@ export function Footer() {
 
   const { isPlaying, title, artist } = nowPlaying;
 
-  const playingIcon = <EqualiserSvg className={classes.playingIcon} />;
+  const playingIcon = isPlaying ? (
+    <EqualiserSvg className={classes.playingIcon} />
+  ) : (
+    <SpotifySvg className={classes.spotifyIcon} />
+  );
 
   const playingElement = (
     <div className={classes.inline}>
-      {isPlaying ? playingIcon : <SpotifySvg className={classes.spotifyIcon} />}
+      {playingIcon}
       <Text>{title}</Text>
       <span className={classes.spacer}>—</span>
       <span className={classes.artist}>{artist}</span>
