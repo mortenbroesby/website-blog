@@ -17,3 +17,25 @@ export const AVAILABLE_PAGES: PageProps[] = [
     href: "/uses",
   },
 ];
+
+export interface NowPlaying {
+  isPlaying: boolean;
+  title: string;
+  artist: string;
+  album: string;
+  albumImageUrl: string;
+  songUrl: string;
+}
+
+export const getDefaultNowPlaying = () => {
+  const defaultProps = {
+    isPlaying: false,
+    title: "Not Playing",
+    artist: "Spotify",
+    album: "",
+    albumImageUrl: "",
+    songUrl: "",
+  };
+
+  return defaultProps;
+};

@@ -9,6 +9,7 @@ import {
   TypographyStylesProvider,
   Global,
 } from "@mantine/core";
+import { SpotifyProvider } from "~/context";
 import { GetServerSidePropsContext } from "next";
 import { getCookie, setCookies } from "cookies-next";
 import { AppProps } from "next/app";
@@ -220,7 +221,9 @@ const Application = (properties: ApplicationProps) => {
         }}
       >
         <TypographyStylesProvider>
-          <TrackingProvider {...properties} />
+          <SpotifyProvider>
+            <TrackingProvider {...properties} />
+          </SpotifyProvider>
         </TypographyStylesProvider>
       </MantineProvider>
     </ColorSchemeProvider>

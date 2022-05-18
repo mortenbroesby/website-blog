@@ -14,20 +14,6 @@ export default function Snippets({ data }: { data: Metadata[] }) {
     );
   });
 
-  const blogPostCards = data.map((data, index) => {
-    const { id, metadata } = data;
-    const { date, title } = metadata;
-
-    return (
-      <Card
-        title={title}
-        href={`/snippets/${id}`}
-        date={date}
-        key={index}
-      ></Card>
-    );
-  });
-
   return (
     <Page>
       <Head>

@@ -1,5 +1,5 @@
 import React from "react";
-import { createStyles, Text, Container, Group } from "@mantine/core";
+import { createStyles, Text, Container, Group, keyframes } from "@mantine/core";
 import {
   BrandInstagram,
   BrandGithub,
@@ -8,6 +8,27 @@ import {
 } from "tabler-icons-react";
 
 import { AvatarLink } from "~/components";
+import { useSpotify } from "~/context";
+import { SpotifySvg } from "./SpotifySvg";
+import { EqualiserSvg } from "./EqualiserSvg";
+
+export const bounce = keyframes({
+  "10%": {
+    transform: "transform: scaleY(0.3)",
+  },
+  "30%": {
+    transform: "transform: scaleY(1)",
+  },
+  "60%": {
+    transform: "transform: scaleY(0.5)",
+  },
+  "80%": {
+    transform: "transform: scaleY(0.75)",
+  },
+  "100%": {
+    transform: "transform: scaleY(0.6)",
+  },
+});
 
 const useStyles = createStyles((theme) => ({
   footer: {
@@ -87,35 +108,120 @@ const useStyles = createStyles((theme) => ({
       marginTop: theme.spacing.xs,
     },
   },
+
+  nowPlaying: {
+    display: "flex",
+    justifyContent: "flex-start",
+    alignItems: "center",
+    flex: 1,
+    paddingBottom: 20,
+
+    [theme.fn.smallerThan("sm")]: {
+      flexDirection: "column",
+      alignItems: "center",
+    },
+  },
+
+  inline: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+  },
+
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    width: "100%",
+  },
+
+  content: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    flex: 1,
+
+    flexDirection: "row",
+    [theme.fn.smallerThan("sm")]: {
+      flexDirection: "column",
+    },
+  },
+
+  spotifyIcon: {
+    marginRight: 6,
+    width: 26,
+    height: 26,
+  },
+
+  playingIcon: {
+    marginRight: 6,
+    width: 22,
+    height: 26,
+    fill: "orange",
+  },
+
+  spacer: {
+    paddingLeft: 6,
+    paddingRight: 6,
+  },
+
+  artist: {
+    color: theme.colorScheme === "dark" ? theme.white : theme.colors.gray[6],
+  },
 }));
 
 export function Footer() {
   const { classes } = useStyles();
 
+  const { nowPlaying } = useSpotify();
+
+  const { isPlaying, title, artist } = nowPlaying;
+
+  const playingIcon = <EqualiserSvg className={classes.playingIcon} />;
+
+  const playingElement = (
+    <div className={classes.inline}>
+      {isPlaying ? playingIcon : <SpotifySvg className={classes.spotifyIcon} />}
+      <Text>{title}</Text>
+      <span className={classes.spacer}>—</span>
+      <span className={classes.artist}>{artist}</span>
+    </div>
+  );
+
   return (
     <footer className={classes.footer}>
       <Container className={classes.afterFooter}>
-        <Text color="dimmed" size="xs">
-          © 2022-present Morten Broesby-Olsen. All rights reserved.
-        </Text>
+        <div className={classes.container}>
+          <div className={classes.nowPlaying}>{playingElement}</div>
 
-        <Group spacing={4} className={classes.social} position="right" noWrap>
-          <AvatarLink href="https://github.com/mortenbroesby">
-            <BrandGithub />
-          </AvatarLink>
+          <div className={classes.content}>
+            <Text color="dimmed" size="xs">
+              © 2022-present Morten Broesby-Olsen. All rights reserved.
+            </Text>
 
-          <AvatarLink href="https://www.linkedin.com/in/morten-broesby-olsen/">
-            <BrandLinkedin />
-          </AvatarLink>
+            <Group
+              spacing={4}
+              className={classes.social}
+              position="right"
+              noWrap
+            >
+              <AvatarLink href="https://github.com/mortenbroesby">
+                <BrandGithub />
+              </AvatarLink>
 
-          <AvatarLink href="https://www.instagram.com/mortenbroesby/">
-            <BrandInstagram />
-          </AvatarLink>
+              <AvatarLink href="https://www.linkedin.com/in/morten-broesby-olsen/">
+                <BrandLinkedin />
+              </AvatarLink>
 
-          <AvatarLink href="https://www.facebook.com/mortenbroesby">
-            <BrandFacebook />
-          </AvatarLink>
-        </Group>
+              <AvatarLink href="https://www.instagram.com/mortenbroesby/">
+                <BrandInstagram />
+              </AvatarLink>
+
+              <AvatarLink href="https://www.facebook.com/mortenbroesby">
+                <BrandFacebook />
+              </AvatarLink>
+            </Group>
+          </div>
+        </div>
       </Container>
     </footer>
   );
