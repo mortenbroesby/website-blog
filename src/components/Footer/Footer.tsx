@@ -152,8 +152,15 @@ const useStyles = createStyles((theme) => ({
     },
   },
 
+  iconWrapper: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    marginRight: 10,
+    gap: 2,
+  },
+
   spotifyIcon: {
-    marginRight: 6,
     width: 26,
     height: 26,
     minWidth: 26,
@@ -161,7 +168,6 @@ const useStyles = createStyles((theme) => ({
   },
 
   playingIcon: {
-    marginRight: 6,
     width: 22,
     height: 26,
     minWidth: 26,
@@ -176,6 +182,11 @@ const useStyles = createStyles((theme) => ({
 
   artist: {
     color: theme.colorScheme === "dark" ? theme.white : theme.colors.gray[6],
+  },
+
+  column: {
+    display: "flex",
+    flexDirection: "column",
   },
 }));
 
@@ -205,11 +216,16 @@ export function Footer() {
 
   const playingElement = (
     <div className={classes.inline}>
-      {playingIcon}
-      {isPlaying ? "Currently playing: " : "Last played: "}
-      {displayTitle}
-      <span className={classes.spacer}>—</span>
-      <span className={classes.artist}>{displayArtist}</span>
+      <div className={classes.iconWrapper}>{playingIcon}</div>
+
+      <div className={classes.column}>
+        <div>{isPlaying ? "Currently playing: " : "Last played: "}</div>
+        <div>
+          {displayTitle}
+          <span className={classes.spacer}>—</span>
+          <span className={classes.artist}>{displayArtist}</span>
+        </div>
+      </div>
     </div>
   );
 
