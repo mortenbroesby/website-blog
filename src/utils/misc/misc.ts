@@ -76,7 +76,7 @@ export function flattenObject(object) {
  * @returns number - time in minutes it takes to read the content.
  */
 export function calculateReadTime(content: string): number {
-  const WPS = 275 / 60;
+  const WPS = 200 / 60;
 
   let images = 0;
   const regex = /\w/;

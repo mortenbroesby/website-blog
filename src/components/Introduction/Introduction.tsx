@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Box, Group, createStyles } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
-import { Avatar } from "../Avatar/Avatar";
+import { Avatar } from "~/components";
 
 const useStyles = createStyles((theme) => ({
   alignRight: {

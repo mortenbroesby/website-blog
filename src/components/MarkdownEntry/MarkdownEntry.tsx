@@ -4,12 +4,14 @@ import { MDXRemote } from "next-mdx-remote";
 import { ContentData } from "~/lib";
 import { calculateReadTime } from "~/utils";
 
-import { Code, EditableCode } from "~/components";
+import { Code, EditableCode, BlockQuote } from "~/components";
+
 import { MarkdownHeader } from "./MarkdownHeader";
 
 const components = {
   Code,
   EditableCode,
+  BlockQuote,
 };
 
 const useStyles = createStyles((theme) => ({

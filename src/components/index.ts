@@ -1,4 +1,6 @@
+export * from "./Avatar";
 export * from "./AvatarLink";
+export * from "./BlockQuote";
 export * from "./Breadcrumbs";
 export * from "./Card";
 export * from "./Code";
