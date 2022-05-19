@@ -32,7 +32,13 @@ export const Avatar = ({ src, alt, ...properties }) => {
 
   return (
     <div className={classes.image} {...properties}>
-      <Image className={classes.image} src={src} alt={alt} layout="fill" />
+      <Image
+        className={classes.image}
+        src={src}
+        alt={alt}
+        layout="fill"
+        priority
+      />
     </div>
   );
 };
