@@ -90,7 +90,7 @@ function limitRequests(perSecond: number, maxBurst: number) {
       return next();
     }
 
-    response.status(429).send('Rate limit exceeded');
+    return response.status(429).send('Rate limit exceeded');
   }
 }
 
