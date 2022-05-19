@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { createStyles, Text, Container, Group, keyframes } from "@mantine/core";
 import {
   BrandInstagram,
@@ -116,6 +117,7 @@ const useStyles = createStyles((theme) => ({
     flex: 1,
     paddingBottom: 20,
     fontSize: theme.fontSizes.xs,
+    cursor: "pointer",
 
     [theme.fn.smallerThan("sm")]: {
       flexDirection: "column",
@@ -193,6 +195,7 @@ const useStyles = createStyles((theme) => ({
 const lastFallback = {
   title: "Not Playing",
   artist: "Spotify",
+  songUrl: "https://open.spotify.com/",
 };
 
 export function Footer() {
@@ -204,6 +207,7 @@ export function Footer() {
 
   const displayTitle = isPlaying ? currentTrack.title : fallbackTrack.title;
   const displayArtist = isPlaying ? currentTrack.artist : fallbackTrack.artist;
+  const songUrl = isPlaying ? currentTrack.songUrl : fallbackTrack.songUrl;
 
   const playingIcon = isPlaying ? (
     <>
@@ -215,27 +219,29 @@ export function Footer() {
   );
 
   const playingElement = (
-    <div className={classes.inline}>
-      <div className={classes.iconWrapper}>{playingIcon}</div>
+    <Link href={songUrl}>
+      <div className={classes.nowPlaying}>
+        <div className={classes.inline}>
+          <div className={classes.iconWrapper}>{playingIcon}</div>
 
-      <div className={classes.column}>
-        <div>{isPlaying ? "Currently playing: " : "Last played: "}</div>
-        <div>
-          {displayTitle}
-          <span className={classes.spacer}>—</span>
-          <span className={classes.artist}>{displayArtist}</span>
+          <div className={classes.column}>
+            <div>{isPlaying ? "Currently playing: " : "Last played: "}</div>
+            <div>
+              {displayTitle}
+              <span className={classes.spacer}>—</span>
+              <span className={classes.artist}>{displayArtist}</span>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 
   return (
     <footer className={classes.footer}>
       <Container className={classes.afterFooter}>
         <div className={classes.container}>
-          {isLoading ? null : (
-            <div className={classes.nowPlaying}>{playingElement}</div>
-          )}
+          {isLoading ? null : playingElement}
 
           <div className={classes.content}>
             <Text color="dimmed" size="xs">
