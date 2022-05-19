@@ -23,6 +23,10 @@ export interface NowPlaying {
   track: Track;
 }
 
+export interface NowPlayingResponse {
+  nowPlaying: NowPlaying;
+}
+
 export const getDefaultNowPlaying = () => {
   const defaultProps = {
     isPlaying: false,

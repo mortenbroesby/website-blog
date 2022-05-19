@@ -1,7 +1,14 @@
 import axios from "axios";
-import { createContext, useContext, useEffect, useState } from "react";
-import { getDefaultNowPlaying, NowPlaying, Track } from "~/data";
-import { getRandomItemFromArray } from "~/utils";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { getRandomItemFromArray, LocalStorage } from "~/utils";
+import {
+  getDefaultNowPlaying,
+  NowPlaying,
+  NowPlayingResponse,
+  Track,
+} from "~/data";
+
+const defaultNowPlaying = getDefaultNowPlaying();
 
 interface ContextProps {
   isLoading: boolean;
@@ -10,29 +17,59 @@ interface ContextProps {
   recentlyPlayed: Track[];
 }
 
-const SpotifyContext = createContext({} as ContextProps);
+const SpotifyContext = createContext<ContextProps>({
+  isLoading: true,
+  nowPlaying: getDefaultNowPlaying(),
+  lastPlayed: getDefaultNowPlaying().track,
+  recentlyPlayed: [],
+});
 
-const defaultNowPlaying = getDefaultNowPlaying();
+export const useSpotify = () => useContext(SpotifyContext);
+
+let nowPlayingTimer;
+let recentlyPlayedTimer;
+
+const getLastPlayed: () => { track: Track } = () => {
+  const lastPlayed = LocalStorage.getItem("lastPlayed");
+  return lastPlayed ? JSON.parse(lastPlayed) : defaultNowPlaying;
+};
 
 export const SpotifyProvider = ({ children }: any) => {
   const [isLoading, setIsLoading] = useState(true);
   const [nowPlaying, setNowPlaying] = useState<NowPlaying>(defaultNowPlaying);
-  const [lastPlayed, setLastPlayed] = useState<Track>(defaultNowPlaying.track);
   const [recentlyPlayed, setRecentlyPlayed] = useState<Track[]>([]);
+  const [lastPlayed, setLastPlayed] = useState<Track>(getLastPlayed().track);
 
-  const fetchNowPlaying = async () => {
+  async function fetchNowPlaying() {
     try {
       const response = await axios.get("/api/now-playing");
-      const { nowPlaying } = response?.data ?? {};
 
-      setNowPlaying(nowPlaying);
-      setIsLoading(false);
+      if (isLoading) {
+        setIsLoading(false);
+      }
+
+      const fallback = { nowPlaying: defaultNowPlaying };
+      const data = (response?.data ?? fallback) as NowPlayingResponse;
+
+      const { nowPlaying: currentlyPlaying } = data;
+
+      const trackHasChanged =
+        currentlyPlaying.track.title !== nowPlaying.track.title;
+
+      const stateHasChanged =
+        currentlyPlaying.isPlaying !== nowPlaying.isPlaying;
+
+      const shouldUpdateState = trackHasChanged || stateHasChanged;
+
+      if (shouldUpdateState) {
+        setNowPlaying(currentlyPlaying);
+      }
     } catch (error) {
-      console.log(error);
+      console.log("fetchNowPlaying error: ", error);
     }
-  };
+  }
 
-  const fetchRecentlyPlayed = async () => {
+  async function fetchRecentlyPlayed() {
     try {
       const response = await axios.get("/api/recently-played");
       const { tracks = [] } = response?.data ?? {};
@@ -40,15 +77,14 @@ export const SpotifyProvider = ({ children }: any) => {
 
       setRecentlyPlayed(tracks);
       setLastPlayed(lastPlayed);
+
+      LocalStorage.setItem("lastPlayed", JSON.stringify(lastPlayed));
     } catch (error) {
-      console.log(error);
+      console.log("fetchRecentlyPlayed error: ", error);
     }
-  };
+  }
 
   useEffect(() => {
-    let nowPlayingTimer;
-    let recentlyPlayedTimer;
-
     const fetchNowPlayingJob = async () => {
       await fetchNowPlaying();
 
@@ -76,18 +112,19 @@ export const SpotifyProvider = ({ children }: any) => {
     };
   }, []);
 
+  const ProviderValue = useMemo(
+    () => ({
+      isLoading,
+      nowPlaying,
+      lastPlayed,
+      recentlyPlayed,
+    }),
+    [isLoading, nowPlaying, lastPlayed, recentlyPlayed]
+  );
+
   return (
-    <SpotifyContext.Provider
-      value={{
-        isLoading,
-        nowPlaying,
-        lastPlayed,
-        recentlyPlayed,
-      }}
-    >
+    <SpotifyContext.Provider value={ProviderValue}>
       {children}
     </SpotifyContext.Provider>
   );
 };
-
-export const useSpotify = () => useContext(SpotifyContext);
