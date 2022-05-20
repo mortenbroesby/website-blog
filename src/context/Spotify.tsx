@@ -1,6 +1,6 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
-import { getRandomItemFromArray, LocalStorage } from "~/utils";
+import { LocalStorage } from "~/utils";
 import {
   getDefaultNowPlaying,
   NowPlaying,
@@ -73,7 +73,7 @@ export const SpotifyProvider = ({ children }: any) => {
     try {
       const response = await axios.get("/api/recently-played");
       const { tracks = [] } = response?.data ?? {};
-      const lastPlayed = getRandomItemFromArray(tracks);
+      const lastPlayed = tracks[0];
 
       setRecentlyPlayed(tracks);
       setLastPlayed(lastPlayed);
