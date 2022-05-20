@@ -103,8 +103,8 @@ export const SpotifyProvider = ({ children }: any) => {
       }, 60 * 1000);
     };
 
-    // fetchNowPlayingJob();
-    // fetchRecentlyPlayedJob();
+    fetchNowPlaying();
+    fetchRecentlyPlayed();
 
     return () => {
       clearTimeout(nowPlayingTimer);
