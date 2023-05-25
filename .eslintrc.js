@@ -1,10 +1,14 @@
+/** @type {import("eslint").Linter.Config} */
+
+// This eslint configuration file (and tsconfig.lintstaged.json) is being used only by lint-staged
+
 module.exports = {
   root: true,
-  // This tells ESLint to load the config from the package `eslint-config-custom`
-  extends: ["custom"],
-  settings: {
-    next: {
-      rootDir: ["apps/*/"],
-    },
+
+  parserOptions: {
+    tsconfigRootDir: __dirname,
+    project: ["./tsconfig.lintstaged.json"],
   },
+
+  extends: ["config-eslint"],
 };
