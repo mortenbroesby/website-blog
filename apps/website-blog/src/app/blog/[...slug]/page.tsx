@@ -6,8 +6,7 @@ import { Mdx } from "@/components/mdx-components"
 import "@/styles/mdx.css"
 import { Metadata } from "next"
 import Link from "next/link"
-
-import { env } from "@/env.mjs"
+import { env } from "~/env.mjs"
 
 interface PostPageProps {
   params: {
@@ -72,7 +71,7 @@ export default async function PostPage({ params }: PostPageProps) {
 
   return (
     <article>
-      <Link href="/blog">See all posts</Link>
+      <Link href="/blog">Go back</Link>
       <div>
         {post.date && (
           <time dateTime={post.date}>Published on {post.date}</time>
@@ -84,13 +83,14 @@ export default async function PostPage({ params }: PostPageProps) {
             {authors.map((author) =>
               author ? (
                 <div>
-                  <p>{author.name}</p>
+                  <p>Author: {author.name}</p>
                 </div>
               ) : null
             )}
           </div>
         ) : null}
       </div>
+
       <Mdx code={post.body.code} />
     </article>
   )
