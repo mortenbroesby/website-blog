@@ -16,6 +16,7 @@ build
 # misc
 .DS_Store
 *.pem
+.package-changed-hash
 
 # debug
 npm-debug.log*
