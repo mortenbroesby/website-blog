@@ -1,0 +1,23 @@
+---
+title: Flatten Object
+date: "2022-03-31"
+authors:
+  - mortenbroesby
+---
+
+<br />
+
+<Code
+  language="typescript"
+  code={`
+export function flattenObject(object) {
+  const result = {};
+
+Object.values(object).forEach((nestedObject) => {
+Object.assign(result, nestedObject);
+});
+
+return result;
+}
+`}
+/>

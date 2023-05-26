@@ -16,22 +16,34 @@ export default async function BlogPage() {
 
   return (
     <div>
-      {posts?.length ? (
-        <div>
-          {posts.map((post, index) => (
-            <article key={post._id}>
-              <h2>{post.title}</h2>
-              {post.description && <p>{post.description}</p>}
-              {post.date && <p>{post.date}</p>}
-              <Link href={post.slug}>
-                <span>View Article</span>
-              </Link>
-            </article>
-          ))}
-        </div>
-      ) : (
-        <p>No posts published.</p>
-      )}
+      <Link href="/">
+        <b>Go to Home</b>
+      </Link>
+      <hr />
+      <div>
+        {posts?.length ? (
+          <div>
+            {posts.map((post, index) => (
+              <article key={post._id}>
+                <h2>{post.title}</h2>
+
+                {post.description && <p>{post.description}</p>}
+
+                {post.date && <p>Published on {post.date}</p>}
+
+                <Link href={post.slug}>
+                  <span>
+                    <b>View Article</b>
+                  </span>
+                </Link>
+                <hr />
+              </article>
+            ))}
+          </div>
+        ) : (
+          <p>No posts published.</p>
+        )}
+      </div>
     </div>
   )
 }

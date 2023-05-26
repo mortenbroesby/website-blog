@@ -35,6 +35,7 @@ const components = {
   td: ({ className, ...props }) => <td {...props} />,
   pre: ({ className, ...props }) => <pre {...props} />,
   code: ({ className, ...props }) => <code {...props} />,
+  BlockQuote: ({ className, ...props }) => <blockquote {...props} />,
 }
 
 interface MdxProps {

@@ -71,26 +71,26 @@ export default async function PostPage({ params }: PostPageProps) {
 
   return (
     <article>
-      <Link href="/blog">Go back</Link>
+      <Link href="/blog">
+        <b>Go back</b>
+      </Link>
+      <hr />
+
       <div>
         {post.date && (
           <time dateTime={post.date}>Published on {post.date}</time>
         )}
+
         <h1>{post.title}</h1>
 
         {authors?.length ? (
-          <div className="mt-4 flex space-x-4">
+          <div>
             {authors.map((author) =>
-              author ? (
-                <div>
-                  <p>Author: {author.name}</p>
-                </div>
-              ) : null
+              author ? <p>Author: {author.name}</p> : null
             )}
           </div>
         ) : null}
       </div>
-
       <Mdx code={post.body.code} />
     </article>
   )

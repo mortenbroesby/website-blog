@@ -1,0 +1,57 @@
+---
+title: "How I Built My Blog"
+description: "An insight into how I built this blog"
+date: "2023-05-26"
+authors:
+  - mortenbroesby
+---
+
+### Introduction
+
+When building this page, my biggest priority has been to find a solution that would leverage simplicity,
+but also let me embed completely custom content in each blog post, should I want or need it.
+
+When using markdown or a rich-text editor in a CMS, it's not at all clear how to do this.
+You're generally limited to the handful of HTML elements that these tools can render to.
+
+#### The stack
+
+This blog is a Next.js application.
+
+I chose Next.js as it provides a great developer experience with all the features i needed.
+Hybrid static & server rendering, TypeScript support, smart bundling, route pre-fetching, and more.
+
+I deploy and host this blog on Vercel.
+
+Their hosting approach is hassle-less, and comes with a basic CI built-in.
+
+When it comes to the styling, I haven't yet fully decided.
+It's currently a tie between Stitches, Emotion and extending Mantine's theming, which uses Emotion below the hood.
+
+#### MDX to the rescue!
+
+MDX is great. It allows me to write in Markdown, and seamlessly integrate JSX components.
+It's an extension of Markdown that allows you to import and use custom React components.
+
+Even if you've never written Markdown, you've probably seen it before.
+It's a widely-used format — all those README.md files that are shown on Github repositories are Markdown!
+
+For Metadata, I use frontmatter. It's a simple way to add metadata to markdown files.
+
+To orchestrate fetching and rendering of MDX files, I [ContentLayer](https://www.contentlayer.dev/).
+Shoutout to ContentLayer for making file-based content generation so easy!
+
+#### Using MDX with Next.js
+
+On this blog, I currently use next-mdx-remote. I will probably switch to [mdx-bundler](https://github.com/kentcdodds/mdx-bundler)
+in the near future, as it offers many of the benefits of next-mdx-remote, but without the "no import" drawback.
+
+#### Component Framework
+
+Currently undecided!
+
+#### My future plans
+
+The plan is to write here any time I learn something new, or when I want to share things.
+
+Let's see how that goes ;-)
