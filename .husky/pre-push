@@ -3,4 +3,4 @@
 
 sh .husky/scripts/install-dependencies.sh
 
-pnpm run lint-husky
+pnpm run lint:husky

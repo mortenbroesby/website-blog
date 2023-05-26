@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "main": "index.js",
   "scripts": {
-    "update-dependencies": "npx npm-check-updates -u"
+    "dependencies:update": "npx npm-check-updates -u"
   },
   "devDependencies": {
     "@tanstack/eslint-plugin-query": "4.29.9",
