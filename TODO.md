@@ -2,6 +2,7 @@
 
 - Migrate `Uses` page
 - Migrate `public` folder with icons, etc.
+
 - Setup page architecture via [EFA](https://michalzalecki.com/elegant-frontend-architecture/)
 
 - Truly consider what page layout I want
@@ -11,16 +12,23 @@
   - Example: https://leerob.io/blog/community-messaging-fit
 
 - Setup dedicated components
+
   - Take some inspiration from https://github.com/shadcn/taxonomy
   - Utilise libraries where possible
     - https://ark-ui.com/
     - https://www.radix-ui.com/
+
+- Style the website and blog
+
+- Add Renovate bot
+  - https://github.com/renovatebot/renovate/blob/main/docs/usage/getting-started/installing-onboarding.md
 
 # Nice to haves
 
 - Dashboard Area - https://github.com/matt765/daydash
 - Github Auth - look at https://github.com/shadcn/taxonomy
 - Possibly migrate https://mortenbroesby.github.io/tree-online/
+- Switch to Github Pages?
 
 ### Inspiration
 
