@@ -4,6 +4,7 @@ import { allAuthors, allPosts } from "contentlayer/generated"
 import { Mdx } from "@/components/mdx-components"
 
 import "@/styles/mdx.css"
+
 import { Metadata } from "next"
 import Link from "next/link"
 import { env } from "~/env.mjs"
@@ -33,13 +34,6 @@ export async function generateMetadata({
   if (!post) {
     return {}
   }
-
-  const url = env.NEXT_PUBLIC_APP_URL
-
-  const ogUrl = new URL(`${url}/api/og`)
-  ogUrl.searchParams.set("heading", post.title)
-  ogUrl.searchParams.set("type", "Blog Post")
-  ogUrl.searchParams.set("mode", "dark")
 
   return {
     title: post.title,
