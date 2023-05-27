@@ -17,6 +17,7 @@
   - Utilise libraries where possible
     - https://ark-ui.com/
     - https://www.radix-ui.com/
+    - https://ui.shadcn.com/docs/components
 
 - Style the website and blog
 
