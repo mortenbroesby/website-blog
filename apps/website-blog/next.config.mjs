@@ -8,6 +8,7 @@ const nextConfig = {
   images: {
     domains: ["avatars.githubusercontent.com"],
   },
+  distDir: "build",
   experimental: {
     appDir: true,
   },
