@@ -1,6 +1,6 @@
 module.exports = {
   disableEmoji: false,
-  format: "{type}{scope}: {emoji}{subject}",
+  format: "{type}{scope}: {emoji} {subject}",
   list: [
     "test",
     "feat",
