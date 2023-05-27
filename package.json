@@ -8,7 +8,7 @@
     "lint": "turbo run lint",
     "lint:husky": "lint-staged",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "commit": "git add --all && git-cz",
+    "commit": "git add --all && git-cz && git push",
     "sync": "run-s dependencies",
     "dependencies": "run-s dependencies:*",
     "dependencies:update": "turbo run dependencies:update && npx npm-check-updates -u",
