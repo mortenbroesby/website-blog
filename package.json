@@ -8,6 +8,7 @@
     "lint": "turbo run lint",
     "lint:husky": "lint-staged",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "commit": "git-cz",
     "sync": "run-s dependencies",
     "dependencies": "run-s dependencies:*",
     "dependencies:update": "turbo run dependencies:update && npx npm-check-updates -u",
@@ -43,5 +44,10 @@
     "turbo": "^1.9.9",
     "typescript": "5.0.4"
   },
-  "packageManager": "pnpm@8.5.1"
+  "packageManager": "pnpm@8.5.1",
+  "config": {
+    "commitizen": {
+      "path": "git-cz"
+    }
+  }
 }
