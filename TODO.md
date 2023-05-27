@@ -21,3 +21,18 @@
 - Dashboard Area - https://github.com/matt765/daydash
 - Github Auth - look at https://github.com/shadcn/taxonomy
 - Possibly migrate https://mortenbroesby.github.io/tree-online/
+
+### Inspiration
+
+https://github.com/shadcn/taxonomy
+https://github.com/mkosir/turborepo-boilerplate
+
+### Architecture
+
+https://github.com/alan2207/bulletproof-react
+
+### Libraries
+
+https://mantine.dev/
+https://chakra-ui.com/
+https://mui.com/
