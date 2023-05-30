@@ -1,15 +1,29 @@
 import * as React from "react"
-import { cn } from "@/utils"
 
 import { ModeToggle } from "@/components/mode-toggle"
 
-export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
-  return (
-    <footer className={cn(className)}>
-      <div className="container flex flex-col items-center justify-between gap-4 py-10 md:h-24 md:flex-row md:py-0">
-        <div className="flex flex-col items-center gap-4 px-8 md:flex-row md:gap-2 md:px-0"></div>
+import { Spotify } from "./spotify"
 
-        <ModeToggle />
+export function Footer() {
+  return (
+    <footer>
+      <div className="container bg-background border-t">
+        <div className="max-w-4xl mx-auto">
+          <div className="flex flex-col items-center justify-between gap-4 pt-10 md:h-24 md:flex-row md:py-0">
+            <Spotify />
+
+            <ModeToggle />
+          </div>
+
+          <div className="flex flex-col items-center justify-center py-10 md:flex-row md:justify-center">
+            <p className="text-xs text-center md:inline md:mr-1">
+              © 2022-present Morten Broesby-Olsen.
+            </p>
+            <p className="text-xs text-center md:inline md:ml-1">
+              All rights reserved.
+            </p>
+          </div>
+        </div>
       </div>
     </footer>
   )
