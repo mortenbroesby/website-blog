@@ -9,7 +9,7 @@ export function Page({ children }: React.HTMLAttributes<HTMLElement>) {
     <div className="flex min-h-screen flex-col space-y-6">
       <Header items={websiteConfig.mainNav} />
 
-      <div className="container">{children}</div>
+      <div className="container grow">{children}</div>
 
       <Footer />
     </div>
