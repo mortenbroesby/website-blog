@@ -4,6 +4,7 @@ import { Inter, Josefin_Sans } from "next/font/google"
 import { TailwindIndicator } from "@/components"
 import { RootProvider } from "@/infrastructure"
 import { cn } from "@/utils"
+import { Analytics } from "@vercel/analytics/react"
 
 const fontSans = Inter({
   subsets: ["latin"],
@@ -57,6 +58,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <RootProvider>
           <>{children}</>
           <TailwindIndicator />
+          <Analytics />
         </RootProvider>
       </body>
     </html>
