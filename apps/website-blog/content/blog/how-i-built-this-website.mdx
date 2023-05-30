@@ -1,6 +1,6 @@
 ---
-title: "How I Built My Blog"
-description: "An insight into how I built this blog"
+title: "How I Built This Website"
+description: "An Insight into the tech stack behind this website"
 date: "2023-05-26"
 authors:
   - mortenbroesby
@@ -25,9 +25,6 @@ I deploy and host this blog on Vercel.
 
 Their hosting approach is hassle-less, and comes with a basic CI built-in.
 
-When it comes to the styling, I haven't yet fully decided.
-It's currently a tie between Stitches, Emotion and extending Mantine's theming, which uses Emotion below the hood.
-
 #### MDX to the rescue!
 
 MDX is great. It allows me to write in Markdown, and seamlessly integrate JSX components.
@@ -38,20 +35,5 @@ It's a widely-used format — all those README.md files that are shown on Github
 
 For Metadata, I use frontmatter. It's a simple way to add metadata to markdown files.
 
-To orchestrate fetching and rendering of MDX files, I [ContentLayer](https://www.contentlayer.dev/).
-Shoutout to ContentLayer for making file-based content generation so easy!
-
-#### Using MDX with Next.js
-
-On this blog, I currently use next-mdx-remote. I will probably switch to [mdx-bundler](https://github.com/kentcdodds/mdx-bundler)
-in the near future, as it offers many of the benefits of next-mdx-remote, but without the "no import" drawback.
-
-#### Component Framework
-
-Currently undecided!
-
-#### My future plans
-
-The plan is to write here any time I learn something new, or when I want to share things.
-
-Let's see how that goes ;-)
+To orchestrate fetching and rendering of MDX files, I use [ContentLayer](https://www.contentlayer.dev/).
+Shoutout for making file-based content generation so easy!

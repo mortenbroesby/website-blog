@@ -1,9 +1,6 @@
 # TODO
 
-- Migrate `Uses` page
-- Migrate `public` folder with icons, etc.
-
-- Setup page architecture via [EFA](https://michalzalecki.com/elegant-frontend-architecture/)
+- Migrate theming from Taxonomy -- needs provider!
 
 - Truly consider what page layout I want
 

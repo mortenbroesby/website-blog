@@ -2,6 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  font-family: var(--font-sans);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+}
+
+h1 {
+  @apply font-heading mt-2 inline-block text-4xl leading-tight;
+}
+
+h2 {
+  @apply text-2xl font-semibold tracking-tight;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -74,6 +95,7 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;

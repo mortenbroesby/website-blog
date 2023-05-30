@@ -1,13 +1,13 @@
 import { notFound } from "next/navigation"
+import { buttonVariants, Mdx } from "@/components"
 import { allAuthors, allPosts } from "contentlayer/generated"
-
-import { Mdx } from "@/components/mdx-components"
 
 import "@/styles/mdx.css"
 
 import { Metadata } from "next"
 import Link from "next/link"
 import { env } from "~/env.mjs"
+import { cn, formatDate } from "~/src/utils"
 
 interface PostPageProps {
   params: {
@@ -64,28 +64,43 @@ export default async function PostPage({ params }: PostPageProps) {
   )
 
   return (
-    <article>
-      <Link href="/blog">
-        <b>Go back</b>
-      </Link>
-      <hr />
-
+    <article className="container relative max-w-3xl py-6 lg:py-10">
       <div>
         {post.date && (
-          <time dateTime={post.date}>Published on {post.date}</time>
+          <time
+            dateTime={post.date}
+            className="text-muted-foreground block text-sm"
+          >
+            Published on {formatDate(post.date)}
+          </time>
         )}
 
         <h1>{post.title}</h1>
 
+        {post.description && <h2>{post.description}</h2>}
+
         {authors?.length ? (
-          <div>
-            {authors.map((author) =>
-              author ? <p>Author: {author.name}</p> : null
-            )}
+          <div className="mt-4 flex space-x-4">
+            {authors?.length ? (
+              <div>
+                {authors.map((author) =>
+                  author ? <p>{author.name}</p> : null
+                )}
+              </div>
+            ) : null}
           </div>
         ) : null}
       </div>
+
       <Mdx code={post.body.code} />
+
+      <hr className="mt-12" />
+
+      <div className="flex justify-center py-6 lg:py-10">
+        <Link href="/blog" className={cn(buttonVariants({ variant: "ghost" }))}>
+          See all posts
+        </Link>
+      </div>
     </article>
   )
 }

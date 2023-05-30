@@ -84,7 +84,6 @@ My goal in terms of architecture is for this repository to implement ["Elegant F
 
 ## 👏 Credits
 
-- Mantine - [github](https://github.com/mantinedev/mantine) & [link](https://mantine.dev/)
 - Lee Robinson - [link](https://leerob.io/)
 - Taxonomy - [github](https://github.com/shadcn/taxonomy)
 - Turborepo Boilerplate - [github](https://github.com/mkosir/turborepo-boilerplate)

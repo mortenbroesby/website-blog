@@ -2,6 +2,6 @@
   "name": "config-tsconfig",
   "version": "0.0.0",
   "scripts": {
-    "dependencies:update": "npx npm-check-updates -u"
+    "packages:update": "npx npm-check-updates -u"
   }
 }

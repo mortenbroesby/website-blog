@@ -11,6 +11,6 @@
       "cache": false,
       "persistent": true
     },
-    "dependencies:update": {}
+    "packages:update": {}
   }
 }
