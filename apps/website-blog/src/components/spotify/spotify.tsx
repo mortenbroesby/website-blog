@@ -58,5 +58,5 @@ export function Spotify() {
     </Link>
   )
 
-  return <div>{isLoading ? null : playingElement}</div>
+  return <div>{isLoading ? <p>Loading...</p> : playingElement}</div>
 }

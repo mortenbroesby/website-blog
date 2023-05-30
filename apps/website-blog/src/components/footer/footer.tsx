@@ -1,8 +1,9 @@
 import * as React from "react"
+import Link from "next/link"
 
-import { ModeToggle } from "@/components/mode-toggle"
-
-import { Spotify } from "./spotify"
+import { Icons } from "../icons"
+import { Spotify } from "../spotify"
+import { LinkedInSvg } from "./LinkedInSvg"
 
 export function Footer() {
   return (
@@ -11,6 +12,16 @@ export function Footer() {
         <div className="container bg-background">
           <div className="flex flex-col items-center justify-between gap-4 pt-10 md:h-24 md:flex-row md:py-0">
             <Spotify />
+
+            <div className="flex flex-row gap-2">
+              <Link href="https://www.linkedin.com/in/morten-broesby-olsen/">
+                <LinkedInSvg />
+              </Link>
+
+              <Link href="https://github.com/mortenbroesby">
+                <Icons.github />
+              </Link>
+            </div>
           </div>
 
           <div className="flex flex-col items-center justify-center py-10 md:flex-row md:justify-center">

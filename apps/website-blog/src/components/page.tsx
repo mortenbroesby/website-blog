@@ -1,7 +1,7 @@
 import * as React from "react"
 
 import { websiteConfig } from "../infrastructure"
-import { Footer } from "./footer"
+import { Footer } from "./footer/footer"
 import { Header } from "./header"
 
 export function Page({ children }: React.HTMLAttributes<HTMLElement>) {

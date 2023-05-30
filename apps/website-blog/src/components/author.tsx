@@ -18,7 +18,7 @@ function Author({
   return (
     <Link href={`https://github.com/${github}`}>
       <div
-        className="items-center text-black inline-flex whitespace-nowrap text-left"
+        className="items-center inline-flex whitespace-nowrap text-left"
         {...properties}
       >
         <div className="mr-2">
@@ -31,12 +31,12 @@ function Author({
           />
         </div>
 
-        <span className="text-[0.90rem] flex flex-col justify:start">
-          <span className="font-semibold">{name}</span>
-          <span className="text-sky-600 cursor-pointer text-[0.75rem]">
+        <div className="text-[0.90rem] flex flex-col justify:start">
+          <p className="font-semibold">{name}</p>
+          <p className="text-sky-600 cursor-pointer text-[0.75rem]">
             @{github}
-          </span>
-        </span>
+          </p>
+        </div>
       </div>
     </Link>
   )
