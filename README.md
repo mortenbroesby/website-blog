@@ -1,4 +1,4 @@
-<div align="center">
+  <div align="center">
   <h1 align="center">
     morten.broesby.dk
   </h1>
@@ -17,7 +17,21 @@
 
 ---
 
-## 🔍 Description
+## 💻 Frameworks
+
+### ⚡️ Turborepo
+
+Turborepo is a high-performance development tool that simplifies development. It offers lightning-fast performance, effortless monorepo management, easy dependency management, flexible deployment options, and a comprehensive toolset.
+
+#### Lightning-fast performance
+
+Turbocharge your development process with advanced caching and parallel processing, reducing build times and improving overall performance.
+
+#### Effortless monorepo management
+
+Simplify handling of multiple interconnected apps or packages by managing them all in a single repository.
+
+### 🔍 Next.js
 
 This website is built on top of Next.js.
 
@@ -36,7 +50,6 @@ They say it best on their website:
 > They provide a frictionless developer experience to take care of the hard things: deploying instantly, scaling automatically, and serving personalized content around the globe.
 > They make it easy to develop, preview, and ship delightful user experiences, where performance is the default.
 
-
 You can see it running on the following URL:
 
 https://morten-website-blog.vercel.app/
@@ -49,14 +62,17 @@ Developers spend most of their time in some IDE’s (integrated development envi
 
 Below is a non-exhaustive list of reasons to use Typescript.
 
-### Code auto-completion
-- In static type languages IDE, code auto-completion is just faster and works more confidently. Again, you don’t have to dig into documentation because of code hints.
+#### Code auto-completion
 
-### Real-time type checking
-- When you have an object in JavaScript, you can access every property of that object even if it doesn’t exist (in which case it will just be “undefined”). As you can imagine, this can lead to errors that are difficult to debug. In Typescript, your IDE tells you in real-time that you are trying to access something that doesn’t exist.
+In static type languages IDE, code auto-completion is just faster and works more confidently. Again, you don’t have to dig into documentation because of code hints.
+
+#### Real-time type checking
+
+When you have an object in JavaScript, you can access every property of that object even if it doesn’t exist (in which case it will just be “undefined”). As you can imagine, this can lead to errors that are difficult to debug. In Typescript, your IDE tells you in real-time that you are trying to access something that doesn’t exist.
 
 ### Easier code refactor
-- Refactoring code in IDE is much easier in Typescript – it works way better than in vanilla Javascript. Sometimes a “wrongly“ named variable in JS can break your refactoring. With Typescript it’s easier for the code editor to find particular, connected variables, functions, classes etc. so it just works more reliably.
+
+Refactoring code in IDE is much easier in Typescript – it works way better than in vanilla Javascript. Sometimes a “wrongly“ named variable in JS can break your refactoring. With Typescript it’s easier for the code editor to find particular, connected variables, functions, classes etc. so it just works more reliably.
 
 ---
 
@@ -64,14 +80,13 @@ Below is a non-exhaustive list of reasons to use Typescript.
 
 My goal in terms of architecture is for this repository to implement ["Elegant Frontend Architecture"](https://michalzalecki.com/elegant-frontend-architecture/).
 
-There's a natural challenge to this approach within a Next.js application, as they expect a specific folder structure for parts of the application. I plan to work around this over time, as the website evolves.
-
 ---
 
 ## 👏 Credits
 
-- Mantine - [github](https://github.com/mantinedev/mantine) & [link](https://mantine.dev/)
 - Lee Robinson - [link](https://leerob.io/)
+- Taxonomy - [github](https://github.com/shadcn/taxonomy)
+- Turborepo Boilerplate - [github](https://github.com/mkosir/turborepo-boilerplate)
 
 ---
 

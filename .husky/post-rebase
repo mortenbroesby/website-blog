@@ -2,5 +2,3 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 sh .husky/scripts/install-dependencies.sh
-
-pnpm run lint:husky
