@@ -1,6 +1,7 @@
 # TODO
 
-- Add back Google Analytics
+- Remove Vercel Analytics (?)
+- Improve Google Analytics (?)
 - Add back anything missing from the old site
 
   - Snippets (?)
