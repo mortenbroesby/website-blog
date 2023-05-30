@@ -2,7 +2,7 @@ import "@/styles/globals.css"
 
 import { Inter, Josefin_Sans } from "next/font/google"
 import { TailwindIndicator } from "@/components"
-import { RootProvider } from "@/infrastructure"
+import { RootProvider, TrackingProvider } from "@/infrastructure"
 import { cn } from "@/utils"
 import { Analytics } from "@vercel/analytics/react"
 
@@ -59,6 +59,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <>{children}</>
           <TailwindIndicator />
           <Analytics />
+          <TrackingProvider />
         </RootProvider>
       </body>
     </html>
