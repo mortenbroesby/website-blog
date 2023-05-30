@@ -1,10 +1,11 @@
 import { notFound } from "next/navigation"
-import { Mdx, Page } from "@/components"
-import { allPages } from "contentlayer/generated"
+import { Author, Mdx, Page } from "@/components"
+import { allAuthors, allPages } from "contentlayer/generated"
 
 import "@/styles/mdx.css"
 
 import { Metadata } from "next"
+import { formatDate } from "~/src/utils"
 
 interface PageProps {
   params: {
@@ -51,17 +52,34 @@ export default async function PagePage({ params }: PageProps) {
     notFound()
   }
 
+  const authors = page.authors.map((author) =>
+    allAuthors.find(({ slug }) => slug === `/authors/${author}`)
+  )
+
   return (
     <Page>
-      <div className="flex flex-col items-start gap-4 md:flex-row md:justify-between md:gap-8">
-        <div className="flex-1 space-y-4">
-          <h1 className="font-heading mt-2 inline-block text-3xl leading-tight">
-            {page.title}
-          </h1>
-        </div>
+      <div className="text-center">
+        <h1>{page.title}</h1>
+
+        {page.date && (
+          <time
+            dateTime={page.date}
+            className="text-muted-foreground block text-sm my-2"
+          >
+            Updated on {formatDate(page.date)}
+          </time>
+        )}
+
+        {authors?.length ? (
+          <div className="mt-4">
+            {authors.map((author) =>
+              author ? <Author author={author} /> : null
+            )}
+          </div>
+        ) : null}
       </div>
 
-      <hr />
+      <hr className="mt-6 mb-8" />
 
       <Mdx code={page.body.code} />
     </Page>

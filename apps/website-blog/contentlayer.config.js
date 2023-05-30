@@ -119,6 +119,15 @@ export const Page = defineDocumentType(() => ({
     description: {
       type: "string",
     },
+    date: {
+      type: "date",
+      required: true,
+    },
+    authors: {
+      type: "list",
+      of: { type: "string" },
+      required: true,
+    },
   },
   computedFields,
 }))

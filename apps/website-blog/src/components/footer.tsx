@@ -6,13 +6,11 @@ import { Spotify } from "./spotify"
 
 export function Footer() {
   return (
-    <footer>
-      <div className="container bg-background border-t">
-        <div className="max-w-4xl mx-auto">
+    <footer className="">
+      <div className="border-t mt-10">
+        <div className="container bg-background">
           <div className="flex flex-col items-center justify-between gap-4 pt-10 md:h-24 md:flex-row md:py-0">
             <Spotify />
-
-            <ModeToggle />
           </div>
 
           <div className="flex flex-col items-center justify-center py-10 md:flex-row md:justify-center">

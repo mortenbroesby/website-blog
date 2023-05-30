@@ -10,6 +10,7 @@ import { useClickInside } from "@/hooks/use-click-inside"
 import { useLockBody } from "@/hooks/use-lock-body"
 
 import { Icons } from "./icons"
+import { ModeToggle } from "./mode-toggle"
 
 export function Header({
   items,
@@ -31,7 +32,7 @@ export function Header({
   return (
     <header className="bg-background sticky top-0 z-40 border-b">
       <div className="container flex h-16 items-center justify-between py-4">
-        <div className="flex gap-6 md:gap-10">
+        <div className="flex gap-6 md:gap-10 w-full">
           <Link href="/" className="hidden items-center space-x-2 md:flex">
             <h3 className="hidden font-bold sm:inline-block">@mortenbroesby</h3>
           </Link>
@@ -63,6 +64,10 @@ export function Header({
             {showMobileMenu ? <Icons.close /> : <Icons.menu />}
             <span className="font-bold">Menu</span>
           </button>
+
+          <div className="ml-auto">
+            <ModeToggle />
+          </div>
 
           {showMobileMenu && hasItems && (
             <MobileNav items={items} onCloseRef={onCloseRef}>
@@ -117,6 +122,7 @@ function MobileNav({
             </Link>
           ))}
         </nav>
+
         {children}
       </div>
     </div>
