@@ -1,10 +1,8 @@
 "use client"
 
 import * as React from "react"
+import { Button, Icons } from "@/components"
 import { useTheme } from "next-themes"
-
-import { Button } from "@/components/button"
-import { Icons } from "@/components/icons"
 
 export function ModeToggle() {
   const { setTheme } = useTheme()

@@ -1,11 +1,9 @@
 import "@/styles/globals.css"
 
 import { Inter, Josefin_Sans } from "next/font/google"
-import { MainNav, TailwindIndicator } from "@/components"
-import { ThemeProvider, websiteConfig } from "@/infrastructure"
+import { TailwindIndicator } from "@/components"
+import { RootProvider } from "@/infrastructure"
 import { cn } from "@/utils"
-
-import { SiteFooter } from "@/components/footer"
 
 const fontSans = Inter({
   subsets: ["latin"],
@@ -23,15 +21,13 @@ interface RootLayoutProps {
   children: React.ReactNode
 }
 
-const defaultDescription =
-  "Website & Blog of Morten Broesby-Olsen. A software engineer, a programmer, a hobbyist."
-
 export const metadata = {
   title: {
     default: "Morten Broesby-Olsen",
     template: `%s | Morten Broesby-Olsen`,
   },
-  description: defaultDescription,
+  description:
+    "Website & Blog of Morten Broesby-Olsen. A software engineer, a programmer, a hobbyist.",
   keywords: [
     "Next.js",
     "React",
@@ -58,30 +54,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
           fontHeading.variable
         )}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <PageLayout>{children}</PageLayout>
+        <RootProvider>
+          <>{children}</>
           <TailwindIndicator />
-        </ThemeProvider>
+        </RootProvider>
       </body>
     </html>
-  )
-}
-
-function PageLayout({ children }: RootLayoutProps) {
-  return (
-    <div className="flex min-h-screen flex-col space-y-6">
-      <header className="bg-background sticky top-0 z-40 border-b">
-        <div className="container flex h-16 items-center justify-between py-4">
-          <MainNav items={websiteConfig.mainNav} />
-        </div>
-      </header>
-      <div className="container grid flex-1 gap-12">
-        <main className="flex w-full flex-1 flex-col overflow-hidden">
-          {children}
-        </main>
-      </div>
-
-      <SiteFooter />
-    </div>
   )
 }

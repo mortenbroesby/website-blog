@@ -6,6 +6,7 @@ import "@/styles/mdx.css"
 
 import { Metadata } from "next"
 import Link from "next/link"
+import { Page } from "@/components"
 import { env } from "~/env.mjs"
 import { cn, formatDate } from "~/src/utils"
 
@@ -64,43 +65,48 @@ export default async function PostPage({ params }: PostPageProps) {
   )
 
   return (
-    <article className="container relative max-w-3xl py-6 lg:py-10">
-      <div>
-        {post.date && (
-          <time
-            dateTime={post.date}
-            className="text-muted-foreground block text-sm"
+    <Page>
+      <article className="container relative max-w-3xl py-6 lg:py-10">
+        <div>
+          {post.date && (
+            <time
+              dateTime={post.date}
+              className="text-muted-foreground block text-sm"
+            >
+              Published on {formatDate(post.date)}
+            </time>
+          )}
+
+          <h1>{post.title}</h1>
+
+          {post.description && <h2>{post.description}</h2>}
+
+          {authors?.length ? (
+            <div className="mt-4 flex space-x-4">
+              {authors?.length ? (
+                <div>
+                  {authors.map((author) =>
+                    author ? <p>{author.name}</p> : null
+                  )}
+                </div>
+              ) : null}
+            </div>
+          ) : null}
+        </div>
+
+        <Mdx code={post.body.code} />
+
+        <hr className="mt-12" />
+
+        <div className="flex justify-center py-6 lg:py-10">
+          <Link
+            href="/blog"
+            className={cn(buttonVariants({ variant: "ghost" }))}
           >
-            Published on {formatDate(post.date)}
-          </time>
-        )}
-
-        <h1>{post.title}</h1>
-
-        {post.description && <h2>{post.description}</h2>}
-
-        {authors?.length ? (
-          <div className="mt-4 flex space-x-4">
-            {authors?.length ? (
-              <div>
-                {authors.map((author) =>
-                  author ? <p>{author.name}</p> : null
-                )}
-              </div>
-            ) : null}
-          </div>
-        ) : null}
-      </div>
-
-      <Mdx code={post.body.code} />
-
-      <hr className="mt-12" />
-
-      <div className="flex justify-center py-6 lg:py-10">
-        <Link href="/blog" className={cn(buttonVariants({ variant: "ghost" }))}>
-          See all posts
-        </Link>
-      </div>
-    </article>
+            See all posts
+          </Link>
+        </div>
+      </article>
+    </Page>
   )
 }

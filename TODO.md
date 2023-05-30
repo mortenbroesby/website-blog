@@ -28,6 +28,8 @@
 - Possibly migrate https://mortenbroesby.github.io/tree-online/
 - Switch to Github Pages?
 
+import { env } from "~/env.mjs"
+
 ### Inspiration
 
 https://github.com/shadcn/taxonomy

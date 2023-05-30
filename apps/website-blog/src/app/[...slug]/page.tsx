@@ -1,12 +1,10 @@
 import { notFound } from "next/navigation"
-import { Mdx } from "@/components"
+import { Mdx, Page } from "@/components"
 import { allPages } from "contentlayer/generated"
 
 import "@/styles/mdx.css"
 
 import { Metadata } from "next"
-import Link from "next/link"
-import { env } from "~/env.mjs"
 
 interface PageProps {
   params: {
@@ -54,18 +52,20 @@ export default async function PagePage({ params }: PageProps) {
   }
 
   return (
-    <div className="container max-w-4xl py-2">
-      <div className="flex flex-col items-start gap-4 md:flex-row md:justify-between md:gap-8">
-        <div className="flex-1 space-y-4">
-          <h1 className="font-heading mt-2 inline-block text-3xl leading-tight">
-            {page.title}
-          </h1>
+    <Page>
+      <div className="container max-w-4xl py-2">
+        <div className="flex flex-col items-start gap-4 md:flex-row md:justify-between md:gap-8">
+          <div className="flex-1 space-y-4">
+            <h1 className="font-heading mt-2 inline-block text-3xl leading-tight">
+              {page.title}
+            </h1>
+          </div>
         </div>
+
+        <hr />
+
+        <Mdx code={page.body.code} />
       </div>
-
-      <hr />
-
-      <Mdx code={page.body.code} />
-    </div>
+    </Page>
   )
 }
