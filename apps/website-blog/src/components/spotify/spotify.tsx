@@ -4,6 +4,7 @@ import React from "react"
 import Link from "next/link"
 import { useSpotify } from "~/src/infrastructure"
 
+import { Icons } from "../icons"
 import { EqualiserSvg } from "./EqualiserSvg"
 import { SpotifySvg } from "./SpotifySvg"
 
@@ -58,5 +59,19 @@ export function Spotify() {
     </Link>
   )
 
-  return <div>{isLoading ? <p>Loading...</p> : playingElement}</div>
+  const loadingElement = (
+    <div className="flex items-center justify-start flex-1 text-xs">
+      <div className="flex items-center">
+        <div className="mr-2">
+          <Icons.spinner className="animate-spin" />
+        </div>
+
+        <div className="flex flex-col">
+          <div className="text-gray-600">Loading Spotify details ...</div>
+        </div>
+      </div>
+    </div>
+  )
+
+  return <div>{isLoading ? loadingElement : playingElement}</div>
 }

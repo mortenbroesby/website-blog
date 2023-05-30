@@ -5,13 +5,13 @@ import {
   ChevronLeft,
   ChevronRight,
   Command,
+  Copyright,
   CreditCard,
   File,
   FileText,
   HelpCircle,
   Image,
   Laptop,
-  LinkedinIcon,
   Loader2,
   LucideProps,
   Menu,
@@ -55,7 +55,7 @@ export const Icons = {
   laptop: Laptop,
   twitter: Twitter,
   check: Check,
-  linkedin: LinkedinIcon,
+  copyright: Copyright,
   github: ({ ...props }: LucideProps) => (
     <svg
       aria-hidden="true"

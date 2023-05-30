@@ -8,6 +8,7 @@ export const LinkedInSvg = (properties) => {
       width="24px"
       height="24px"
     >
+      <rect width="100%" height="100%" fill="#FFFFFF" />
       <g>
         <path d="M246.4,204.35v-0.665c-0.136,0.223-0.324,0.446-0.442,0.665H246.4z" />
         <path
