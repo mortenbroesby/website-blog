@@ -1,5 +1,10 @@
 # TODO
 
+- Add back Google Analytics
+- Add back anything missing from the old site
+
+  - Snippets (?)
+
 - Setup Auth?
 
 - Cleanup dedicated components
