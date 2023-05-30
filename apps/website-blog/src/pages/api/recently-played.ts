@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next/types"
-import { getRecentlyPlayed } from "~/src/lib/spotify"
+import { getRecentlyPlayed } from "@/lib"
 
 export default async function fetchRecentlyPlayed(
   req: NextApiRequest,

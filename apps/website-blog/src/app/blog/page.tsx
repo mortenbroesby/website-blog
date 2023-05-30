@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { Page } from "@/components"
-import { formatDate } from "~/src/utils"
+import { formatDate } from "@/utils"
 import { allPosts } from "contentlayer/generated"
 import { compareDesc } from "date-fns"
 

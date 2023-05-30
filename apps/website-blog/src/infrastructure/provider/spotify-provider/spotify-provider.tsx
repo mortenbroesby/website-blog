@@ -97,24 +97,6 @@ export const SpotifyProvider = ({ children }: any) => {
   }
 
   useEffect(() => {
-    const fetchNowPlayingJob = async () => {
-      await fetchNowPlaying()
-
-      clearTimeout(nowPlayingTimer)
-      nowPlayingTimer = setTimeout(() => {
-        fetchNowPlayingJob()
-      }, 3 * 1000)
-    }
-
-    const fetchRecentlyPlayedJob = async () => {
-      await fetchRecentlyPlayed()
-
-      clearTimeout(recentlyPlayedTimer)
-      recentlyPlayedTimer = setTimeout(() => {
-        fetchNowPlayingJob()
-      }, 60 * 1000)
-    }
-
     fetchNowPlaying()
     fetchRecentlyPlayed()
 

@@ -7,10 +7,9 @@ import "@/styles/mdx.css"
 import React from "react"
 import { Metadata } from "next"
 import Link from "next/link"
-import { Page } from "@/components"
+import { Author, Page } from "@/components"
+import { cn, formatDate } from "@/utils"
 import { env } from "~/env.mjs"
-import { Author } from "~/src/components/author"
-import { cn, formatDate } from "~/src/utils"
 
 interface PostPageProps {
   params: {

@@ -2,9 +2,9 @@
 
 import React from "react"
 import Link from "next/link"
-import { useSpotify } from "~/src/infrastructure"
+import { Icons } from "@/components"
+import { useSpotify } from "@/infrastructure"
 
-import { Icons } from "../icons"
 import { EqualiserSvg } from "./EqualiserSvg"
 import { SpotifySvg } from "./SpotifySvg"
 

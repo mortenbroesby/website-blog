@@ -5,7 +5,7 @@ import { allAuthors, allPages } from "contentlayer/generated"
 import "@/styles/mdx.css"
 
 import { Metadata } from "next"
-import { formatDate } from "~/src/utils"
+import { formatDate } from "@/utils"
 
 interface PageProps {
   params: {
