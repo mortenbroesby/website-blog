@@ -11,7 +11,7 @@ import { useLockBody } from "@/hooks/use-lock-body"
 
 import { Icons } from "./icons"
 
-export function MainNav({
+export function Header({
   items,
   children,
 }: {
@@ -29,49 +29,53 @@ export function MainNav({
   })
 
   return (
-    <div className="flex gap-6 md:gap-10">
-      <Link href="/" className="hidden items-center space-x-2 md:flex">
-        <span className="hidden font-bold sm:inline-block">Home</span>
-      </Link>
+    <header className="bg-background sticky top-0 z-40 border-b">
+      <div className="container flex h-16 items-center justify-between py-4">
+        <div className="flex gap-6 md:gap-10">
+          <Link href="/" className="hidden items-center space-x-2 md:flex">
+            <h3 className="hidden font-bold sm:inline-block">@mortenbroesby</h3>
+          </Link>
 
-      {hasItems && (
-        <nav className="hidden gap-6 md:flex">
-          {items?.map((item, index) => (
-            <Link
-              key={index}
-              href={item.disabled ? "#" : item.href}
-              className={cn(
-                "hover:text-foreground/80 flex items-center text-lg font-medium transition-colors sm:text-sm",
-                item.href.startsWith(`/${segment}`)
-                  ? "text-foreground"
-                  : "text-foreground/60",
-                item.disabled && "cursor-not-allowed opacity-80"
-              )}
-            >
-              {item.title}
-            </Link>
-          ))}
-        </nav>
-      )}
+          {hasItems && (
+            <nav className="hidden gap-6 md:flex">
+              {items?.map((item, index) => (
+                <Link
+                  key={index}
+                  href={item.disabled ? "#" : item.href}
+                  className={cn(
+                    "hover:text-foreground/80 flex items-center text-lg font-medium transition-colors sm:text-sm",
+                    item.href.startsWith(`/${segment}`)
+                      ? "text-foreground"
+                      : "text-foreground/60",
+                    item.disabled && "cursor-not-allowed opacity-80"
+                  )}
+                >
+                  {item.title}
+                </Link>
+              ))}
+            </nav>
+          )}
 
-      <button
-        className="flex items-center space-x-2 md:hidden"
-        onClick={() => setShowMobileMenu(!showMobileMenu)}
-      >
-        {showMobileMenu ? <Icons.close /> : <Icons.menu />}
-        <span className="font-bold">Menu</span>
-      </button>
+          <button
+            className="flex items-center space-x-2 md:hidden"
+            onClick={() => setShowMobileMenu(!showMobileMenu)}
+          >
+            {showMobileMenu ? <Icons.close /> : <Icons.menu />}
+            <span className="font-bold">Menu</span>
+          </button>
 
-      {showMobileMenu && hasItems && (
-        <MobileNav items={items} onCloseRef={onCloseRef}>
-          {children}
-        </MobileNav>
-      )}
-    </div>
+          {showMobileMenu && hasItems && (
+            <MobileNav items={items} onCloseRef={onCloseRef}>
+              {children}
+            </MobileNav>
+          )}
+        </div>
+      </div>
+    </header>
   )
 }
 
-export function MobileNav({
+function MobileNav({
   items,
   children,
   onCloseRef,
@@ -94,9 +98,9 @@ export function MobileNav({
         "bg-black/40"
       )}
     >
-      <div className="bg-popover text-popover-foreground relative z-20 grid gap-6 rounded-md p-4 shadow-md">
+      <div className="bg-popover text-popover-foreground relative z-20 grid gap-4 rounded-md p-4 shadow-md">
         <Link href="/" className="flex items-center space-x-2">
-          <span className="font-bold">Home</span>
+          <span className="font-bold">@mortenbroesby</span>
         </Link>
 
         <nav className="grid grid-flow-row auto-rows-max text-sm">

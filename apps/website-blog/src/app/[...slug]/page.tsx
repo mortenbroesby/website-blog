@@ -53,19 +53,17 @@ export default async function PagePage({ params }: PageProps) {
 
   return (
     <Page>
-      <div className="container max-w-4xl py-2">
-        <div className="flex flex-col items-start gap-4 md:flex-row md:justify-between md:gap-8">
-          <div className="flex-1 space-y-4">
-            <h1 className="font-heading mt-2 inline-block text-3xl leading-tight">
-              {page.title}
-            </h1>
-          </div>
+      <div className="flex flex-col items-start gap-4 md:flex-row md:justify-between md:gap-8">
+        <div className="flex-1 space-y-4">
+          <h1 className="font-heading mt-2 inline-block text-3xl leading-tight">
+            {page.title}
+          </h1>
         </div>
-
-        <hr />
-
-        <Mdx code={page.body.code} />
       </div>
+
+      <hr />
+
+      <Mdx code={page.body.code} />
     </Page>
   )
 }

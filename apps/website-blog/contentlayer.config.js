@@ -95,6 +95,14 @@ export const Author = defineDocumentType(() => ({
       type: "string",
       required: true,
     },
+    avatar: {
+      type: "string",
+      required: true,
+    },
+    github: {
+      type: "string",
+      required: true,
+    },
   },
   computedFields,
 }))
