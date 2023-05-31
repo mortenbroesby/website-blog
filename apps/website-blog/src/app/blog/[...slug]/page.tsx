@@ -9,6 +9,7 @@ import { Metadata } from "next"
 import Link from "next/link"
 import { Author, Page } from "@/components"
 import { cn, formatDate } from "@/utils"
+import { env } from "~/env.mjs"
 
 interface PostPageProps {
   params: {

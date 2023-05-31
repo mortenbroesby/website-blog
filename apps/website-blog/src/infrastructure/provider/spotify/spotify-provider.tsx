@@ -42,15 +42,8 @@ let nowPlayingTimer
 let recentlyPlayedTimer
 
 const getLastPlayed: () => { track: Track } = () => {
-  try {
-    const lastPlayed = LocalStorage.getItem("lastPlayed")
-    if (lastPlayed) {
-      return JSON.parse(lastPlayed)
-    }
-  } catch (error) {
-    console.log("getLastPlayed error: ", error)
-    return defaultNowPlaying
-  }
+  const lastPlayed = LocalStorage.getItem("lastPlayed")
+  return lastPlayed ? JSON.parse(lastPlayed) : defaultNowPlaying
 }
 
 export const SpotifyProvider = ({ children }: any) => {

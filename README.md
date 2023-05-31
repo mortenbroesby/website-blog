@@ -1,16 +1,19 @@
-<center>
+  <div align="center">
+  <h1 align="center">
+    morten.broesby.dk
+  </h1>
 
-# morten.broesby.dk
-
-This repository contains the code for my website & blog.
+  <p align="center">
+    This repository contains the code for my website & blog.
+  </p>
 
 ![Website](https://img.shields.io/website?url=https%3A%2F%2Fmorten-website-blog.vercel.app)
 ![Vercel](https://vercelbadge.vercel.app/api/mortenbroesby/website-blog)
 [![Repo status](https://www.repostatus.org/badges/latest/wip.svg)](./README)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/mortenbroesby/website-blog/graphs/commit-activity)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/atelier-saulx/aviato-ui/graphs/commit-activity)
 [![MIT license](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
 
-</center>
+</div>
 
 ---
 
@@ -49,7 +52,7 @@ They say it best on their website:
 
 You can see it running on the following URL:
 
-[https://morten-website-blog.vercel.app/](https://morten-website-blog.vercel.app/)
+https://morten-website-blog.vercel.app/
 
 ---
 
@@ -59,11 +62,11 @@ Developers spend most of their time in some IDE’s (integrated development envi
 
 Below is a non-exhaustive list of reasons to use Typescript.
 
-### Code auto-completion
+#### Code auto-completion
 
 In static type languages IDE, code auto-completion is just faster and works more confidently. Again, you don’t have to dig into documentation because of code hints.
 
-### Real-time type checking
+#### Real-time type checking
 
 When you have an object in JavaScript, you can access every property of that object even if it doesn’t exist (in which case it will just be “undefined”). As you can imagine, this can lead to errors that are difficult to debug. In Typescript, your IDE tells you in real-time that you are trying to access something that doesn’t exist.
 
@@ -75,7 +78,7 @@ Refactoring code in IDE is much easier in Typescript – it works way better tha
 
 ## 🏡 Architecture
 
-The architecture in this repository is inspired by ["Elegant Frontend Architecture"](https://michalzalecki.com/elegant-frontend-architecture/).
+My goal in terms of architecture is for this repository to implement ["Elegant Frontend Architecture"](https://michalzalecki.com/elegant-frontend-architecture/).
 
 ---
 

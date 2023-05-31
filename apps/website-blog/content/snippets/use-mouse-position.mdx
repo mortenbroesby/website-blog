@@ -1,35 +1,39 @@
 ---
-title: useMousePosition
-description: Get the current mouse position
+title: Use Mouse Position
 date: "2022-05-19"
 authors:
   - mortenbroesby
 ---
 
-```typescript
-import React from "react"
+<br />
 
-export const useMousePosition = () => {
-  const [mousePosition, setMousePosition] = React.useState({
-    x: 0,
-    y: 0,
-  })
+<Code
+  language="typescript"
+  code={`
+import React from 'react';
 
-  React.useEffect(() => {
-    const updateMousePosition = (event) => {
-      setMousePosition({
-        x: event.clientX,
-        y: event.clientY,
-      })
-    }
+const useMousePosition = () => {
+const [
+mousePosition,
+setMousePosition
+] = React.useState({ x: 0, y: 0 });
 
-    window.addEventListener("mousemove", updateMousePosition)
+React.useEffect(() => {
+const updateMousePosition = (event) => {
+setMousePosition({ x: event.clientX, y: event.clientY });
+};
+
+    window.addEventListener('mousemove', updateMousePosition);
 
     return () => {
-      window.removeEventListener("mousemove", updateMousePosition)
-    }
-  }, [])
+      window.removeEventListener('mousemove', updateMousePosition);
+    };
 
-  return mousePosition
-}
-```
+}, []);
+
+return mousePosition;
+};
+
+export default useMousePosition;
+`}
+/>
