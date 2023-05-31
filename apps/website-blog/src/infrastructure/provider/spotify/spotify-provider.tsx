@@ -47,6 +47,7 @@ const getLastPlayed: () => { track: Track } = () => {
     if (lastPlayed) {
       return JSON.parse(lastPlayed)
     }
+    return defaultNowPlaying
   } catch (error) {
     console.log("getLastPlayed error: ", error)
     return defaultNowPlaying
