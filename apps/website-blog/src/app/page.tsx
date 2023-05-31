@@ -26,7 +26,7 @@ export default function RootPage() {
           <Avatar
             src="/images/avatars/mortenbroesby.jpeg"
             alt="Me"
-            className="w-full"
+            className="w-full flex flex-row justify-center"
           />
         </div>
       </div>
