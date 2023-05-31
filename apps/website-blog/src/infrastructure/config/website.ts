@@ -7,6 +7,10 @@ export const websiteConfig: NavConfig = {
       href: "/blog",
     },
     {
+      title: "Snippets",
+      href: "/snippets",
+    },
+    {
       title: "Uses",
       href: "/uses",
     },

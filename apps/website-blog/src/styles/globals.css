@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 html {
+  margin-left: calc(100vw - 100%);
+}
+
+html {
   font-family: var(--font-sans);
 }
 
