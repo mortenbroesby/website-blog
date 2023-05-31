@@ -1,23 +1,19 @@
 ---
-title: Flatten Object
+title: flattenObject
+description: "Flatten a JavasScript object"
 date: "2022-03-31"
 authors:
   - mortenbroesby
 ---
 
-<br />
-
-<Code
-  language="typescript"
-  code={`
+```typescript
 export function flattenObject(object) {
-  const result = {};
+  const result = {}
 
-Object.values(object).forEach((nestedObject) => {
-Object.assign(result, nestedObject);
-});
+  Object.values(object).forEach((nestedObject) => {
+    Object.assign(result, nestedObject)
+  })
 
-return result;
+  return result
 }
-`}
-/>
+```

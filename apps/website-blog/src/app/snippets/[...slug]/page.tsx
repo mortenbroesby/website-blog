@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation"
 import { buttonVariants, Mdx } from "@/components"
-import { allAuthors, allPosts } from "contentlayer/generated"
+import { allAuthors, allPosts, allSnippets } from "contentlayer/generated"
 
 import "@/styles/mdx.css"
 
@@ -10,15 +10,15 @@ import Link from "next/link"
 import { Author, Page } from "@/components"
 import { cn, formatDate } from "@/utils"
 
-interface PostPageProps {
+interface SnippetPageProps {
   params: {
     slug: string[]
   }
 }
 
-async function getPostFromParams(params) {
+async function getSnippetFromParams(params) {
   const slug = params?.slug?.join("/")
-  const post = allPosts.find((post) => post.slugAsParams === slug)
+  const post = allSnippets.find((post) => post.slugAsParams === slug)
 
   if (!post) {
     null
@@ -29,8 +29,8 @@ async function getPostFromParams(params) {
 
 export async function generateMetadata({
   params,
-}: PostPageProps): Promise<Metadata> {
-  const post = await getPostFromParams(params)
+}: SnippetPageProps): Promise<Metadata> {
+  const post = await getSnippetFromParams(params)
 
   if (!post) {
     return {}
@@ -46,35 +46,35 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams(): Promise<
-  PostPageProps["params"][]
+  SnippetPageProps["params"][]
 > {
   return allPosts.map((post) => ({
     slug: post.slugAsParams.split("/"),
   }))
 }
 
-export default async function PostPage({ params }: PostPageProps) {
-  const post = await getPostFromParams(params)
+export default async function PostPage({ params }: SnippetPageProps) {
+  const snippet = await getSnippetFromParams(params)
 
-  if (!post) {
+  if (!snippet) {
     notFound()
   }
 
-  const authors = post.authors.map((author) =>
+  const authors = snippet.authors.map((author) =>
     allAuthors.find(({ slug }) => slug === `/authors/${author}`)
   )
 
   return (
     <Page>
       <div className="text-center">
-        <h1>{post.title}</h1>
+        <h1>{snippet.title}</h1>
 
-        {post.date && (
+        {snippet.date && (
           <time
-            dateTime={post.date}
+            dateTime={snippet.date}
             className="text-muted-foreground block text-sm my-2"
           >
-            Published on {formatDate(post.date)}
+            Published on {formatDate(snippet.date)}
           </time>
         )}
 
@@ -89,13 +89,16 @@ export default async function PostPage({ params }: PostPageProps) {
 
       <hr className="mt-6 mb-8" />
 
-      <Mdx code={post.body.code} />
+      <Mdx code={snippet.body.code} />
 
       <hr className="mt-12" />
 
       <div className="flex justify-center py-6 lg:py-10">
-        <Link href="/blog" className={cn(buttonVariants({ variant: "ghost" }))}>
-          See all posts
+        <Link
+          href="/snippets"
+          className={cn(buttonVariants({ variant: "ghost" }))}
+        >
+          See all snippets
         </Link>
       </div>
     </Page>
