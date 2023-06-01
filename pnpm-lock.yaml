@@ -118,6 +118,9 @@ importers:
       "@hookform/resolvers":
         specifier: ^3.1.0
         version: 3.1.0(react-hook-form@7.44.2)
+      "@prisma/client":
+        specifier: ^4.15.0
+        version: 4.15.0(prisma@4.15.0)
       "@radix-ui/react-accessible-icon":
         specifier: ^1.0.3
         version: 1.0.3(@types/react-dom@18.2.4)(@types/react@18.2.7)(react-dom@18.2.0)(react@18.2.0)
@@ -205,6 +208,12 @@ importers:
       "@t3-oss/env-nextjs":
         specifier: ^0.4.0
         version: 0.4.0(typescript@5.0.4)(zod@3.21.4)
+      "@types/request-ip":
+        specifier: ^0.0.37
+        version: 0.0.37
+      "@types/uuid":
+        specifier: ^9.0.1
+        version: 9.0.1
       "@typescript-eslint/parser":
         specifier: 5.59.8
         version: 5.59.8(eslint@8.41.0)(typescript@5.0.4)
@@ -253,6 +262,9 @@ importers:
       postmark:
         specifier: ^3.0.18
         version: 3.0.18
+      prisma:
+        specifier: ^4.15.0
+        version: 4.15.0
       prop-types:
         specifier: ^15.8.1
         version: 15.8.1
@@ -274,6 +286,9 @@ importers:
       react-textarea-autosize:
         specifier: ^8.4.1
         version: 8.4.1(@types/react@18.2.7)(react@18.2.0)
+      request-ip:
+        specifier: ^3.3.0
+        version: 3.3.0
       sharp:
         specifier: ^0.32.1
         version: 0.32.1
@@ -283,12 +298,18 @@ importers:
       stripe:
         specifier: ^12.7.0
         version: 12.7.0
+      swr:
+        specifier: ^2.1.5
+        version: 2.1.5(react@18.2.0)
       tailwind-merge:
         specifier: ^1.12.0
         version: 1.12.0
       tailwindcss-animate:
         specifier: ^1.0.5
         version: 1.0.5(tailwindcss@3.3.2)
+      uuid:
+        specifier: ^9.0.0
+        version: 9.0.0
       zod:
         specifier: ^3.21.4
         version: 3.21.4
@@ -4001,6 +4022,38 @@ packages:
       tslib: 2.5.0
     dev: true
 
+  /@prisma/client@4.15.0(prisma@4.15.0):
+    resolution:
+      {
+        integrity: sha512-xnROvyABcGiwqRNdrObHVZkD9EjkJYHOmVdlKy1yGgI+XOzvMzJ4tRg3dz1pUlsyhKxXGCnjIQjWW+2ur+YXuw==,
+      }
+    engines: { node: ">=14.17" }
+    requiresBuild: true
+    peerDependencies:
+      prisma: "*"
+    peerDependenciesMeta:
+      prisma:
+        optional: true
+    dependencies:
+      "@prisma/engines-version": 4.15.0-28.8fbc245156db7124f997f4cecdd8d1219e360944
+      prisma: 4.15.0
+    dev: false
+
+  /@prisma/engines-version@4.15.0-28.8fbc245156db7124f997f4cecdd8d1219e360944:
+    resolution:
+      {
+        integrity: sha512-sVOig4tjGxxlYaFcXgE71f/rtFhzyYrfyfNFUsxCIEJyVKU9rdOWIlIwQ2NQ7PntvGnn+x0XuFo4OC1jvPJKzg==,
+      }
+    dev: false
+
+  /@prisma/engines@4.15.0:
+    resolution:
+      {
+        integrity: sha512-FTaOCGs0LL0OW68juZlGxFtYviZa4xdQj/rQEdat2txw0s3Vu/saAPKjNVXfIgUsGXmQ72HPgNr6935/P8FNAA==,
+      }
+    requiresBuild: true
+    dev: false
+
   /@protobufjs/aspromise@1.1.2:
     resolution:
       {
@@ -6703,6 +6756,15 @@ packages:
       "@types/scheduler": 0.16.3
       csstype: 3.1.2
 
+  /@types/request-ip@0.0.37:
+    resolution:
+      {
+        integrity: sha512-uw6/i3rQnpznxD7LtLaeuZytLhKZK6bRoTS6XVJlwxIOoOpEBU7bgKoVXDNtOg4Xl6riUKHa9bjMVrL6ESqYlQ==,
+      }
+    dependencies:
+      "@types/node": 20.2.5
+    dev: false
+
   /@types/resolve@1.20.2:
     resolution:
       {
@@ -6771,6 +6833,13 @@ packages:
       {
         integrity: sha512-PBjIUxZHOuj0R15/xuwJYjFi+KZdNFrehocChv4g5hu6aFroHue8m0lBP0POdK2nKzbw0cgV1mws8+V/JAcEkQ==,
       }
+
+  /@types/uuid@9.0.1:
+    resolution:
+      {
+        integrity: sha512-rFT3ak0/2trgvp4yYZo5iKFEPsET7vKydKF+VRCxlQ9bpheehyAJH89dAkaLEq/j/RZXJIqcgsmPJKUP1Z28HA==,
+      }
+    dev: false
 
   /@types/yargs-parser@21.0.0:
     resolution:
@@ -16373,6 +16442,18 @@ packages:
       prettier: 2.8.8
     dev: true
 
+  /prisma@4.15.0:
+    resolution:
+      {
+        integrity: sha512-iKZZpobPl48gTcSZVawLMQ3lEy6BnXwtoMj7hluoGFYu2kQ6F9LBuBrUyF95zRVnNo8/3KzLXJXJ5TEnLSJFiA==,
+      }
+    engines: { node: ">=14.17" }
+    hasBin: true
+    requiresBuild: true
+    dependencies:
+      "@prisma/engines": 4.15.0
+    dev: false
+
   /process-nextick-args@2.0.1:
     resolution:
       {
@@ -17227,6 +17308,13 @@ packages:
         integrity: sha512-PV0dzCYDNfRi1jCDbJzpW7jNNDRuCOG/jI5ctQcGKt/clZD+YcPS3yIlWuTJMmESC8aevCFmWJy5wjAFgNqN6w==,
       }
     engines: { node: ">=0.10" }
+    dev: false
+
+  /request-ip@3.3.0:
+    resolution:
+      {
+        integrity: sha512-cA6Xh6e0fDBBBwH77SLJaJPBmD3nWVAcF9/XAcsrIHdjhFzFiB5aNQFytdjCGPezU3ROwrR11IddKAM08vohxA==,
+      }
     dev: false
 
   /require-directory@2.1.1:
@@ -18368,6 +18456,18 @@ packages:
       upper-case: 1.1.3
     dev: true
 
+  /swr@2.1.5(react@18.2.0):
+    resolution:
+      {
+        integrity: sha512-/OhfZMcEpuz77KavXST5q6XE9nrOBOVcBLWjMT+oAE/kQHyE3PASrevXCtQDZ8aamntOfFkbVJp7Il9tNBQWrw==,
+      }
+    peerDependencies:
+      react: ^16.11.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+      use-sync-external-store: 1.2.0(react@18.2.0)
+    dev: false
+
   /symbol-tree@3.2.4:
     resolution:
       {
@@ -19507,6 +19607,17 @@ packages:
       tslib: 2.5.0
     dev: false
 
+  /use-sync-external-store@1.2.0(react@18.2.0):
+    resolution:
+      {
+        integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==,
+      }
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+    dev: false
+
   /util-deprecate@1.0.2:
     resolution:
       {
@@ -19538,6 +19649,14 @@ packages:
     resolution:
       {
         integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==,
+      }
+    hasBin: true
+    dev: false
+
+  /uuid@9.0.0:
+    resolution:
+      {
+        integrity: sha512-MXcSTerfPa4uqyzStbRoTgt5XIe3x5+42+q1sDuy3R5MDk66URdLMOZe5aPX/SQd+kuYAh0FdP/pO28IkQyTeg==,
       }
     hasBin: true
     dev: false

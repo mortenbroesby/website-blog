@@ -4,6 +4,8 @@ import { formatDate } from "@/utils"
 import { allPosts } from "contentlayer/generated"
 import { compareDesc } from "date-fns"
 
+import ViewCounter from "./view-counter"
+
 export const metadata = {
   title: "Blog",
 }
@@ -54,15 +56,26 @@ export default async function BlogPage() {
             >
               <h2>{post.title}</h2>
 
-              {post.description && (
-                <p className="text-muted-foreground">{post.description}</p>
-              )}
+              <div>
+                {post.description && (
+                  <p className="text-muted-foreground">{post.description}</p>
+                )}
+              </div>
 
-              {post.date && (
-                <p className="text-muted-foreground text-sm">
-                  {formatDate(post.date)}
-                </p>
-              )}
+              <div className="flex flex-row pt-1">
+                <>
+                  <p className="text-muted-foreground text-xs">
+                    {formatDate(post.date)}
+                  </p>
+                  <p className="text-muted-foreground text-xs mx-2">—</p>
+                </>
+
+                <ViewCounter
+                  className="text-muted-foreground text-xs"
+                  slug={post.slugAsParams}
+                  trackView={false}
+                />
+              </div>
 
               <Link href={post.slug} className="absolute inset-0">
                 <span className="sr-only">View Article</span>

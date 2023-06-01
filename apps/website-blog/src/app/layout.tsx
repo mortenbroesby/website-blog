@@ -24,8 +24,8 @@ interface RootLayoutProps {
 
 export const metadata = {
   title: {
-    default: "Morten Broesby-Olsen",
-    template: `%s | Morten Broesby-Olsen`,
+    default: "@mortenbroesby",
+    template: `%s | @mortenbroesby`,
   },
   description:
     "Website & Blog of Morten Broesby-Olsen. A software engineer, a programmer, a hobbyist.",

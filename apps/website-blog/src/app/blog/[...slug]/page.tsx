@@ -10,6 +10,8 @@ import Link from "next/link"
 import { Author, Page } from "@/components"
 import { cn, formatDate } from "@/utils"
 
+import ViewCounter from "../view-counter"
+
 interface PostPageProps {
   params: {
     slug: string[]
@@ -69,14 +71,23 @@ export default async function PostPage({ params }: PostPageProps) {
       <div className="text-center">
         <h1>{post.title}</h1>
 
-        {post.date && (
-          <time
-            dateTime={post.date}
-            className="text-muted-foreground block text-sm my-2"
-          >
-            Published on {formatDate(post.date)}
-          </time>
-        )}
+        <div className="flex flex-row text-center justify-center items-center">
+          <>
+            <time
+              dateTime={post.date}
+              className="text-muted-foreground block text-sm my-2"
+            >
+              Published on {formatDate(post.date)}
+            </time>
+            <p className="text-muted-foreground text-xs mx-2">—</p>
+          </>
+
+          <ViewCounter
+            className="text-muted-foreground text-xs"
+            slug={post.slugAsParams}
+            trackView
+          />
+        </div>
 
         {authors?.length ? (
           <div className="mt-4">
