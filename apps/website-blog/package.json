@@ -14,6 +14,7 @@
     "dev:next": "next dev",
     "dev:prisma": "pnpm prisma:studio",
     "build": "run-s build:*",
+    "build:prisma": "pnpm prisma:generate",
     "build:contentlayer": "contentlayer build",
     "build:next": "next build",
     "turbo": "next dev --turbo",
