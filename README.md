@@ -1,16 +1,12 @@
-<center>
-
 # morten.broesby.dk
 
 This repository contains the code for my website & blog.
 
 ![Website](https://img.shields.io/website?url=https%3A%2F%2Fmorten-website-blog.vercel.app)
 ![Vercel](https://vercelbadge.vercel.app/api/mortenbroesby/website-blog)
-[![Repo status](https://www.repostatus.org/badges/latest/wip.svg)](./README)
+[![Repo status](https://www.repostatus.org/badges/latest/active.svg)](./README)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/mortenbroesby/website-blog/graphs/commit-activity)
 [![MIT license](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
-
-</center>
 
 ---
 
@@ -20,11 +16,11 @@ This repository contains the code for my website & blog.
 
 Turborepo is a high-performance development tool that simplifies development. It offers lightning-fast performance, effortless monorepo management, easy dependency management, flexible deployment options, and a comprehensive toolset.
 
-#### Lightning-fast performance
+#### ⚡️ Lightning-fast performance
 
 Turbocharge your development process with advanced caching and parallel processing, reducing build times and improving overall performance.
 
-#### Effortless monorepo management
+#### 💪 Effortless monorepo management
 
 Simplify handling of multiple interconnected apps or packages by managing them all in a single repository.
 

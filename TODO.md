@@ -4,7 +4,7 @@
 - Improve Google Analytics (?)
 - Add back anything missing from the old site
 
-  - Snippets (?)
+<https://planetscale.com/blog/how-to-setup-next-js-with-prisma-and-planetscale>
 
 - Setup Auth?
 
