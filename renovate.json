@@ -1,13 +1,4 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base"],
-  "onboarding": true,
-  "packageRules": [
-    {
-      "automerge": true,
-      "packagePatterns": ["*"],
-      "packageFiles": ["package.json"],
-      "commitMessage": "chore: 🚀 update dependencies"
-    }
-  ]
+  "extends": ["config:base"]
 }
