@@ -14,7 +14,6 @@
     "sync:install": "pnpm install",
     "sync:syncpack:check": "syncpack list-mismatches",
     "sync:syncpack:fix": "syncpack fix-mismatches",
-    "sync:deduplicate": "pnpm dedupe",
     "clean": "rm -rf node_modules && pnpm -r exec rm -rf node_modules"
   },
   "devDependencies": {
