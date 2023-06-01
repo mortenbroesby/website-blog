@@ -8,6 +8,10 @@
 
 <https://github.com/trpc/examples-next-prisma-starter/tree/main>
 
+<https://supabase.com/docs/guides/integrations/prisma>
+
+Let's use supabase!
+
 - Setup Auth?
 
 - Cleanup dedicated components
