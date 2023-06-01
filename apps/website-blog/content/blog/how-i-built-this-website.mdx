@@ -8,7 +8,7 @@ authors:
 
 ### Introduction
 
-When building this page, my biggest priority has been to find a solution that would leverage simplicity,
+When building this site, my biggest priority has been to find a solution that would leverage simplicity,
 but also let me embed completely custom content in each blog post, should I want or need it.
 
 When using markdown or a rich-text editor in a CMS, it's not at all clear how to do this.
@@ -37,3 +37,8 @@ For Metadata, I use frontmatter. It's a simple way to add metadata to markdown f
 
 To orchestrate fetching and rendering of MDX files, I use [ContentLayer](https://www.contentlayer.dev/).
 Shoutout for making file-based content generation so easy!
+
+#### Database
+
+For type-safe database interactions, I'm using Prisma. I'm setup via Supabase for now, via their Postgres database.
+I might switch to PlanetScale for hosting later on, as they provide a more scalable solution.

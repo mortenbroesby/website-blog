@@ -31,6 +31,11 @@ This website is built on top of Next.js.
 I chose Next.js as it provides a great developer experience with all the features i needed.
 Hybrid static & server rendering, TypeScript support, smart bundling, route pre-fetching, and more.
 
+### 📦 Prisma
+
+Prisma is a next-generation ORM that can be used to build GraphQL servers, REST APIs, microservices & more.
+I've used Prisma to connect to my PostgreSQL database, facilitated via Supabase.
+
 ---
 
 ## 📡 Hosting
