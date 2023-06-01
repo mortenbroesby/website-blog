@@ -26,14 +26,16 @@ async function getAsyncIPAddress(): Promise<string | undefined> {
 }
 
 async function getIPAddress(req: NextApiRequest): Promise<string> {
-  const asyncUserIPAddress = await getAsyncIPAddress()
-  if (asyncUserIPAddress && isValidIPAddress(asyncUserIPAddress)) {
-    return asyncUserIPAddress
+  if (req.headers["x-real-ip"]) {
+    const realIP = req.headers["x-real-ip"] as string
+    if (isValidIPAddress(realIP)) {
+      return realIP
+    }
   }
 
-  const requestedIp = requestIp.getClientIp(req)
-  if (requestedIp && isValidIPAddress(requestedIp)) {
-    return requestedIp
+  const remoteAddress = req.socket.remoteAddress
+  if (remoteAddress && isValidIPAddress(remoteAddress)) {
+    return remoteAddress
   }
 
   if (req.headers["x-forwarded-for"]) {
@@ -45,16 +47,14 @@ async function getIPAddress(req: NextApiRequest): Promise<string> {
     }
   }
 
-  if (req.headers["x-real-ip"]) {
-    const realIP = req.headers["x-real-ip"] as string
-    if (isValidIPAddress(realIP)) {
-      return realIP
-    }
+  const asyncUserIPAddress = await getAsyncIPAddress()
+  if (asyncUserIPAddress && isValidIPAddress(asyncUserIPAddress)) {
+    return asyncUserIPAddress
   }
 
-  const remoteAddress = req.socket.remoteAddress
-  if (remoteAddress && isValidIPAddress(remoteAddress)) {
-    return remoteAddress
+  const requestedIp = requestIp.getClientIp(req)
+  if (requestedIp && isValidIPAddress(requestedIp)) {
+    return requestedIp
   }
 
   return uuidv4()
