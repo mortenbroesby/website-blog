@@ -71,11 +71,11 @@ export default async function PostPage({ params }: PostPageProps) {
       <div className="text-center">
         <h1>{post.title}</h1>
 
-        <div className="flex flex-row text-center justify-center items-center">
+        <div className="flex flex-row text-center justify-center items-center my-2">
           <>
             <time
               dateTime={post.date}
-              className="text-muted-foreground block text-sm my-2"
+              className="text-muted-foreground block text-sm"
             >
               Published on {formatDate(post.date)}
             </time>
@@ -83,7 +83,7 @@ export default async function PostPage({ params }: PostPageProps) {
           </>
 
           <ViewCounter
-            className="text-muted-foreground text-xs"
+            className="text-muted-foreground text-sm"
             slug={post.slugAsParams}
             trackView
           />
