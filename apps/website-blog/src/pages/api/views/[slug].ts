@@ -72,7 +72,9 @@ export default async function handler(
     const { slug } = req.query
 
     if (!slug) {
-      return res.status(400).json({ message: "Slug is required." })
+      return res.status(400).json({
+        message: "Slug is required.",
+      })
     }
 
     const ipAddress = await getIPAddress(req)
@@ -86,16 +88,8 @@ export default async function handler(
       console.log("Error creating view counter:", error)
     }
 
-    const viewCounts = await prisma.viewCounter.findMany({
-      where: { slug: slugValue },
-      select: { count: true },
-    })
-
-    const totalCount = viewCounts.reduce((total, view) => total + view.count, 0)
-
     return res.status(200).json({
-      total: totalCount,
-      ipAddress,
+      message: "Success",
     })
   } catch (error) {
     console.log(error)
