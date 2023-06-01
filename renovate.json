@@ -7,9 +7,14 @@
       "automerge": true,
       "packagePatterns": ["*"],
       "packageFiles": ["package.json"],
-      "onPrCreate": [
-        "pnpm install && pnpm lockfile --lockfile-only && git add pnpm-lock.yaml"
-      ],
+      "postUpgradeTasks": {
+        "commands": [
+          "pnpm install && pnpm lockfile --lockfile-only",
+          "git add pnpm-lock.yaml"
+        ],
+        "fileFilters": ["pnpm-lock.yaml"],
+        "executionMode": "update"
+      },
       "commitMessage": "chore: 🚀 update dependencies"
     }
   ]
