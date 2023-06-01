@@ -12,26 +12,31 @@ This repository contains the code for my website & blog.
 
 ## 💻 Frameworks
 
-### ⚡️ Turborepo
+### 🚀 Turborepo
 
-Turborepo is a high-performance development tool that simplifies development. It offers lightning-fast performance, effortless monorepo management, easy dependency management, flexible deployment options, and a comprehensive toolset.
+This is why I chose Turborepo:
+
+Turborepo is an incredible development tool that streamlines the entire development process.
+It brings you unparalleled speed, effortless management of monorepos, simplified dependency handling, versatile deployment choices, and a comprehensive set of tools.
 
 #### ⚡️ Lightning-fast performance
 
-Turbocharge your development process with advanced caching and parallel processing, reducing build times and improving overall performance.
+Rev up your development workflow with cutting-edge caching and parallel processing, resulting in faster build times and overall enhanced performance.
 
 #### 💪 Effortless monorepo management
 
-Simplify handling of multiple interconnected apps or packages by managing them all in a single repository.
+Simplify the management of multiple interconnected apps or packages by centralizing them all within a single repository. No more headaches trying to juggle multiple repositories.
 
 ### 🔍 Next.js
 
 This website is built on top of Next.js.
 
-I chose Next.js as it provides a great developer experience with all the features i needed.
-Hybrid static & server rendering, TypeScript support, smart bundling, route pre-fetching, and more.
+I opted for Next.js due to its exceptional developer experience, encompassing all the necessary features I required.
+It offers a great blend of hybrid static and server rendering, seamless TypeScript support, intelligent bundling, route pre-fetching, and much more.
 
 ### 📦 Prisma
+
+I went with Prisma and PostgreSQL as my database setup.
 
 Prisma is a next-generation ORM that can be used to build GraphQL servers, REST APIs, microservices & more.
 I've used Prisma to connect to my PostgreSQL database, facilitated via Supabase.
