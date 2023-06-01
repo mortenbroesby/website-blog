@@ -8,14 +8,19 @@ export default async function handler(
   res: NextApiResponse
 ) {
   try {
-    const viewCounts = await prisma.viewCounter.findMany({
-      select: {
-        slug: true,
+    const viewCounts = await prisma.viewCounter.groupBy({
+      by: ["slug"],
+      _sum: {
         count: true,
       },
     })
 
-    return res.status(200).json(viewCounts)
+    const transformedViewCounts = viewCounts.map((item) => ({
+      slug: item.slug,
+      count: item._sum.count || 0,
+    }))
+
+    return res.status(200).json(transformedViewCounts)
   } catch (error) {
     console.log(error)
     return res.status(500).json({

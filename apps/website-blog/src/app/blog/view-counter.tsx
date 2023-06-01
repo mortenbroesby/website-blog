@@ -26,25 +26,18 @@ const ViewCounter: React.FC<ViewCounterProps> = ({
   trackView,
   ...properties
 }) => {
-  const { data: initialData, mutate } = useSWR<PostView[]>(
-    "/api/views",
-    fetcher
-  )
+  const { data, mutate, isLoading } = useSWR<PostView[]>("/api/views", fetcher)
 
-  const [data, setData] = useState<PostView[]>(initialData || [])
-
-  const viewsForSlug = data.find((view) => view.slug === slug)
+  const viewsForSlug = data?.find((view) => view.slug === slug)
   const views = new Number(viewsForSlug?.count || 0)
 
   const viewsLabel = views === 1 ? "view" : "views"
 
   useEffect(() => {
     const registerView = async () => {
-      const response = await fetch(`/api/views/${slug}`, {
+      await fetch(`/api/views/${slug}`, {
         method: "POST",
       })
-
-      const postData = await response.json()
 
       mutate()
     }
@@ -54,13 +47,13 @@ const ViewCounter: React.FC<ViewCounterProps> = ({
     }
   }, [slug, trackView])
 
-  useEffect(() => {
-    setData(initialData || [])
-  }, [initialData])
+  if (isLoading) {
+    return <p {...properties}>... views​</p>
+  }
 
   return (
     <p {...properties}>
-      {data.length > 0 ? `${views.toLocaleString()} ${viewsLabel}` : "​"}
+      {data ? `${views.toLocaleString()} ${viewsLabel}` : "​"}
     </p>
   )
 }
