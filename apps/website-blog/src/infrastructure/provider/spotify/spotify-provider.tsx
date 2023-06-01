@@ -62,7 +62,7 @@ export const SpotifyProvider = ({ children }: any) => {
 
   async function fetchNowPlaying() {
     try {
-      const response = await axios.get("/api/now-playing")
+      const response = await axios.get("/api/spotify/now-playing")
 
       if (isLoading) {
         setIsLoading(false)
@@ -91,7 +91,7 @@ export const SpotifyProvider = ({ children }: any) => {
 
   async function fetchRecentlyPlayed() {
     try {
-      const response = await axios.get("/api/recently-played")
+      const response = await axios.get("/api/spotify/recently-played")
       const { tracks = [] } = response?.data ?? {}
       const lastPlayed = tracks[0]
 

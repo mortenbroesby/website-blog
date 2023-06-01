@@ -118,6 +118,9 @@ importers:
       "@hookform/resolvers":
         specifier: ^3.1.0
         version: 3.1.0(react-hook-form@7.44.2)
+      "@prisma/client":
+        specifier: ^4.15.0
+        version: 4.15.0(prisma@4.15.0)
       "@radix-ui/react-accessible-icon":
         specifier: ^1.0.3
         version: 1.0.3(@types/react-dom@18.2.4)(@types/react@18.2.7)(react-dom@18.2.0)(react@18.2.0)
@@ -253,6 +256,9 @@ importers:
       postmark:
         specifier: ^3.0.18
         version: 3.0.18
+      prisma:
+        specifier: ^4.15.0
+        version: 4.15.0
       prop-types:
         specifier: ^15.8.1
         version: 15.8.1
@@ -4000,6 +4006,38 @@ packages:
       picocolors: 1.0.0
       tslib: 2.5.0
     dev: true
+
+  /@prisma/client@4.15.0(prisma@4.15.0):
+    resolution:
+      {
+        integrity: sha512-xnROvyABcGiwqRNdrObHVZkD9EjkJYHOmVdlKy1yGgI+XOzvMzJ4tRg3dz1pUlsyhKxXGCnjIQjWW+2ur+YXuw==,
+      }
+    engines: { node: ">=14.17" }
+    requiresBuild: true
+    peerDependencies:
+      prisma: "*"
+    peerDependenciesMeta:
+      prisma:
+        optional: true
+    dependencies:
+      "@prisma/engines-version": 4.15.0-28.8fbc245156db7124f997f4cecdd8d1219e360944
+      prisma: 4.15.0
+    dev: false
+
+  /@prisma/engines-version@4.15.0-28.8fbc245156db7124f997f4cecdd8d1219e360944:
+    resolution:
+      {
+        integrity: sha512-sVOig4tjGxxlYaFcXgE71f/rtFhzyYrfyfNFUsxCIEJyVKU9rdOWIlIwQ2NQ7PntvGnn+x0XuFo4OC1jvPJKzg==,
+      }
+    dev: false
+
+  /@prisma/engines@4.15.0:
+    resolution:
+      {
+        integrity: sha512-FTaOCGs0LL0OW68juZlGxFtYviZa4xdQj/rQEdat2txw0s3Vu/saAPKjNVXfIgUsGXmQ72HPgNr6935/P8FNAA==,
+      }
+    requiresBuild: true
+    dev: false
 
   /@protobufjs/aspromise@1.1.2:
     resolution:
@@ -16369,6 +16407,18 @@ packages:
       multimatch: 4.0.0
       prettier: 2.8.8
     dev: true
+
+  /prisma@4.15.0:
+    resolution:
+      {
+        integrity: sha512-iKZZpobPl48gTcSZVawLMQ3lEy6BnXwtoMj7hluoGFYu2kQ6F9LBuBrUyF95zRVnNo8/3KzLXJXJ5TEnLSJFiA==,
+      }
+    engines: { node: ">=14.17" }
+    hasBin: true
+    requiresBuild: true
+    dependencies:
+      "@prisma/engines": 4.15.0
+    dev: false
 
   /process-nextick-args@2.0.1:
     resolution:

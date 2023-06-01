@@ -6,6 +6,8 @@
 
 <https://planetscale.com/blog/how-to-setup-next-js-with-prisma-and-planetscale>
 
+<https://github.com/trpc/examples-next-prisma-starter/tree/main>
+
 - Setup Auth?
 
 - Cleanup dedicated components
