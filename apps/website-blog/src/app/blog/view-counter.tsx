@@ -1,6 +1,6 @@
 "use client"
 
-import { HTMLProps, useEffect } from "react"
+import { HTMLProps, useEffect, useState } from "react"
 import useSWR from "swr"
 
 type PostView = {
@@ -26,27 +26,41 @@ const ViewCounter: React.FC<ViewCounterProps> = ({
   trackView,
   ...properties
 }) => {
-  const { data } = useSWR<PostView[]>("/api/views", fetcher)
+  const { data: initialData, mutate } = useSWR<PostView[]>(
+    "/api/views",
+    fetcher
+  )
 
-  const viewsForSlug = data && data.find((view) => view.slug === slug)
+  const [data, setData] = useState<PostView[]>(initialData || [])
+
+  const viewsForSlug = data.find((view) => view.slug === slug)
   const views = new Number(viewsForSlug?.count || 0)
 
-  const viewsLabel = views == 1 ? "view" : "views"
+  const viewsLabel = views === 1 ? "view" : "views"
 
   useEffect(() => {
-    const registerView = () =>
-      fetch(`/api/views/${slug}`, {
+    const registerView = async () => {
+      const response = await fetch(`/api/views/${slug}`, {
         method: "POST",
       })
+
+      const postData = await response.json()
+
+      mutate()
+    }
 
     if (trackView) {
       registerView()
     }
-  }, [slug])
+  }, [slug, trackView])
+
+  useEffect(() => {
+    setData(initialData || [])
+  }, [initialData])
 
   return (
     <p {...properties}>
-      {data ? `${views.toLocaleString()} ${viewsLabel}` : "​"}
+      {data.length > 0 ? `${views.toLocaleString()} ${viewsLabel}` : "​"}
     </p>
   )
 }
