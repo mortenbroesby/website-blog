@@ -3,6 +3,8 @@
 import { HTMLProps, useEffect, useState } from "react"
 import useSWR from "swr"
 
+import { cn } from "../utils"
+
 type PostView = {
   slug: string
   count: string
@@ -24,6 +26,8 @@ type ViewCounterProps = HTMLProps<HTMLParagraphElement> & {
 const ViewCounter: React.FC<ViewCounterProps> = ({
   slug,
   trackView,
+  className,
+  children,
   ...properties
 }) => {
   const { data, mutate, isLoading } = useSWR<PostView[]>("/api/views", fetcher)
@@ -52,13 +56,17 @@ const ViewCounter: React.FC<ViewCounterProps> = ({
   }, [slug, trackView])
 
   if (isLoading) {
-    return <p {...properties}>... views​</p>
+    return <div className="flex flex-row">{children}</div>
   }
 
   return (
-    <p {...properties}>
-      {data ? `${views.toLocaleString()} ${viewsLabel}` : "​"}
-    </p>
+    <div className="flex flex-row">
+      {children}
+      <p className={cn("text-muted-foreground text-xs mx-2", className)}>—</p>
+      <p className={cn("text-muted-foreground text-xs", className)}>
+        {data ? `${views.toLocaleString()} ${viewsLabel}` : "​"}
+      </p>
+    </div>
   )
 }
 

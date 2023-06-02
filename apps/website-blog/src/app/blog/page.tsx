@@ -49,20 +49,15 @@ export default async function BlogPage() {
                 )}
               </div>
 
-              <div className="flex flex-row pt-1">
-                <>
-                  <p className="text-muted-foreground text-xs">
-                    {formatDate(post.date)}
-                  </p>
-                  <p className="text-muted-foreground text-xs mx-2">—</p>
-                </>
-
-                <ViewCounter
-                  className="text-muted-foreground text-xs"
-                  slug={post.slugAsParams}
-                  trackView={false}
-                />
-              </div>
+              <ViewCounter
+                className="text-muted-foreground text-xs"
+                slug={post.slugAsParams}
+                trackView={false}
+              >
+                <p className="text-muted-foreground text-xs">
+                  {formatDate(post.date)}
+                </p>
+              </ViewCounter>
 
               <Link href={post.slug} className="absolute inset-0">
                 <span className="sr-only">View Article</span>

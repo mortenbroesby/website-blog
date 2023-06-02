@@ -72,21 +72,15 @@ export default async function PostPage({ params }: PostPageProps) {
         <h1>{post.title}</h1>
 
         <div className="flex flex-row text-center justify-center items-center my-2">
-          <>
-            <time
-              dateTime={post.date}
-              className="text-muted-foreground block text-sm"
-            >
-              Published on {formatDate(post.date)}
-            </time>
-            <p className="text-muted-foreground text-xs mx-2">—</p>
-          </>
-
           <ViewCounter
             className="text-muted-foreground text-sm"
             slug={post.slugAsParams}
-            trackView
-          />
+            trackView={false}
+          >
+            <p className="text-muted-foreground text-sm">
+              {formatDate(post.date)}
+            </p>
+          </ViewCounter>
         </div>
 
         {authors?.length ? (
