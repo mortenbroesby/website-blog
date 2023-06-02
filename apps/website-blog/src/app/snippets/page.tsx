@@ -15,11 +15,18 @@ export default async function SnippetPage() {
       return compareDesc(new Date(a.date), new Date(b.date))
     })
 
+  const targetDescription =
+    descriptions[Math.floor(Math.random() * descriptions.length)]
+
   return (
     <Page>
-      <div className="flex flex-row items-start gap-4 text-center">
+      <div className="flex flex-col items-start gap-4 md:flex-row md:justify-between md:gap-8 text-center">
         <div className="flex-1 space-y-4">
           <h1>Snippets</h1>
+
+          <p className="text-l italic text-muted-foreground">
+            {targetDescription}
+          </p>
         </div>
       </div>
 
@@ -56,3 +63,16 @@ export default async function SnippetPage() {
     </Page>
   )
 }
+
+const descriptions = [
+  "Exploring the world of programming with informative code snippets.",
+  "Unlocking the power of coding through practical code examples.",
+  "Discover useful programming techniques with concise code snippets.",
+  "Enhance your coding skills with insightful code examples.",
+  "Practical examples and tips for efficient programming.",
+  "Learn by example: Explore practical code snippets to deepen your programming knowledge.",
+  "Get inspired by real-world code snippets for practical programming insights.",
+  "Unveiling effective coding practices through informative code snippets.",
+  "Explore the intricacies of programming through illustrative code examples.",
+  "Discover concise and actionable code snippets that enhance your programming expertise.",
+]

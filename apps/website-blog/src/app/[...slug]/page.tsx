@@ -52,9 +52,11 @@ export default async function PagePage({ params }: PageProps) {
     notFound()
   }
 
-  const authors = page.authors.map((author) =>
-    allAuthors.find(({ slug }) => slug === `/authors/${author}`)
-  )
+  const authors = page.authors
+    .map((author) =>
+      allAuthors.find(({ slug }) => slug === `/authors/${author}`)
+    )
+    .filter(Boolean) as (typeof allAuthors)[number][]
 
   return (
     <Page>
@@ -72,9 +74,9 @@ export default async function PagePage({ params }: PageProps) {
 
         {authors?.length ? (
           <div className="mt-4">
-            {authors.map((author) =>
-              author ? <Author author={author} /> : null
-            )}
+            {authors.map((author) => (
+              <Author author={author} key={author._id} />
+            ))}
           </div>
         ) : null}
       </div>
