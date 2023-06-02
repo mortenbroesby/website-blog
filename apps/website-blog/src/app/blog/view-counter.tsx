@@ -35,9 +35,13 @@ const ViewCounter: React.FC<ViewCounterProps> = ({
 
   useEffect(() => {
     const registerView = async () => {
-      await fetch(`/api/views/${slug}`, {
+      const response = await fetch(`/api/views/${slug}`, {
         method: "POST",
       })
+
+      const formattedResponse = await response.json()
+
+      console.debug({ formattedResponse })
 
       mutate()
     }

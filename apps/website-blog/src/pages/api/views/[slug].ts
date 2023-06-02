@@ -80,6 +80,20 @@ export default async function handler(
     const ipAddress = await getIPAddress(req)
     const slugValue = getSlugValue(slug)
 
+    const existingView = await prisma.viewCounter.findFirst({
+      where: {
+        ipAddress,
+        slug: slugValue,
+      },
+    })
+
+    // IP address and slug combination already exists, do nothing
+    if (existingView) {
+      return res.status(200).json({
+        message: `View already exists - '${slugValue}'@${ipAddress}`,
+      })
+    }
+
     try {
       await prisma.viewCounter.create({
         data: { ipAddress, slug: slugValue, count: 1 },
