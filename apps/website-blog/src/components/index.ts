@@ -1,3 +1,4 @@
+export { HitCounter } from "./hit-counter"
 export { Header } from "./header"
 export { Icons } from "./icons"
 export { Mdx } from "./mdx-components"

@@ -7,8 +7,9 @@ import "@/styles/mdx.css"
 import React from "react"
 import { Metadata } from "next"
 import Link from "next/link"
-import { Author, Page, ViewCounter } from "@/components"
-import { calculateReadTime, cn, formatDate } from "@/utils"
+import { Author, Page } from "@/components"
+import { cn, formatDate } from "@/utils"
+import { HitCounter } from "~/src/components"
 
 interface PostPageProps {
   params: {
@@ -72,15 +73,9 @@ export default async function PostPage({ params }: PostPageProps) {
         <h1>{post.title}</h1>
 
         <div className="flex flex-row text-center justify-center items-center my-2">
-          <ViewCounter
-            className="text-muted-foreground text-sm"
-            slug={post.slugAsParams}
-            trackView={false}
-          >
-            <p className="text-muted-foreground text-sm">
-              {formatDate(post.date)}
-            </p>
-          </ViewCounter>
+          <p className="text-muted-foreground text-sm">
+            {formatDate(post.date)}
+          </p>
         </div>
 
         {authors?.length ? (
@@ -99,9 +94,16 @@ export default async function PostPage({ params }: PostPageProps) {
       <hr className="mt-12" />
 
       <div className="flex justify-center py-6 lg:py-10">
-        <Link href="/blog" className={cn(buttonVariants({ variant: "ghost" }))}>
+        <Link
+          href="/blog"
+          className={cn(buttonVariants({ variant: "outline" }))}
+        >
           See all posts
         </Link>
+      </div>
+
+      <div className="flex justify-center">
+        <HitCounter slug={post.slugAsParams} trackView={false} />
       </div>
     </Page>
   )
