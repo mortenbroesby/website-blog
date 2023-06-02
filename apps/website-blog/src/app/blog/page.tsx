@@ -60,6 +60,13 @@ export default async function BlogPage() {
               <Link href={post.slug} className="absolute inset-0">
                 <span className="sr-only">View Article</span>
               </Link>
+
+              <Link href={post.slug}>
+                <div className="flex items-center gap-2">
+                  <p className="text-blue-500">Read more</p>
+                  <ArrowIcon />
+                </div>
+              </Link>
             </article>
           ))}
         </div>
@@ -69,6 +76,43 @@ export default async function BlogPage() {
     </Page>
   )
 }
+
+const ArrowIcon = () => (
+  <svg
+    width="36"
+    height="12"
+    viewBox="0 0 36 12"
+    fill="none"
+    className="text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-125 ease-in-out"
+  >
+    <path
+      d="M0.75 6H11.25 M6 0.75L11.25 6L6 11.25"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    ></path>
+    <path
+      d="M15 10L19.5 5.5L15 1"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    ></path>
+    <path
+      d="M23 10L27.5 5.5L23 1"
+      stroke="currentColor"
+      strokeOpacity="0.66"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    ></path>
+    <path
+      d="M31 10L35.5 5.5L31 1"
+      stroke="currentColor"
+      strokeOpacity="0.35"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    ></path>
+  </svg>
+)
 
 const descriptions = [
   "Unveiling the world of tech, games, and life through captivating blog entries.",
