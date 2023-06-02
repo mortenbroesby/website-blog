@@ -1,1 +1,1 @@
-export * from "./tracking"
+export { GA_TRACKING_ID, TrackingProvider } from "./tracking"

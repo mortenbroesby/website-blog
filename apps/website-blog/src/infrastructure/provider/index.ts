@@ -1,2 +1,2 @@
-export * from "./provider"
+export { RootProvider } from "./provider"
 export { useSpotify } from "./spotify"
