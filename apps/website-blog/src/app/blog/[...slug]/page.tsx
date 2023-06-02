@@ -10,7 +10,7 @@ import Link from "next/link"
 import { Author, Page } from "@/components"
 import { cn, formatDate } from "@/utils"
 
-import ViewCounter from "../view-counter"
+import ViewCounter from "../../../components/view-counter"
 
 interface PostPageProps {
   params: {
