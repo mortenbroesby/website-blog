@@ -8,7 +8,7 @@ import React from "react"
 import { Metadata } from "next"
 import Link from "next/link"
 import { Author, Page, ViewCounter } from "@/components"
-import { cn, formatDate } from "@/utils"
+import { calculateReadTime, cn, formatDate } from "@/utils"
 
 interface PostPageProps {
   params: {
@@ -66,6 +66,9 @@ export default async function PostPage({ params }: PostPageProps) {
     )
     .filter(Boolean) as (typeof allAuthors)[number][]
 
+  // Calculate the read time
+  const readTime = calculateReadTime(post.body.code)
+
   return (
     <Page>
       <div className="text-center">
@@ -78,8 +81,10 @@ export default async function PostPage({ params }: PostPageProps) {
             trackView={false}
           >
             <p className="text-muted-foreground text-sm">
-              {formatDate(post.date)}
+              Published on {formatDate(post.date)}
             </p>
+            <p className="text-muted-foreground text-xs mx-2">—</p>
+            <p className="text-muted-foreground text-sm">{readTime} min read</p>
           </ViewCounter>
         </div>
 

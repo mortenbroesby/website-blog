@@ -20,7 +20,7 @@ h6 {
 }
 
 h1 {
-  @apply font-heading mt-2 inline-block text-4xl leading-tight;
+  @apply font-heading mt-2 inline-block text-3xl leading-tight;
 }
 
 h2 {
