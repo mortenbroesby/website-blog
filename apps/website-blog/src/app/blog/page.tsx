@@ -1,10 +1,8 @@
 import Link from "next/link"
-import { Page } from "@/components"
+import { Page, ViewCounter } from "@/components"
 import { formatDate } from "@/utils"
 import { allPosts } from "contentlayer/generated"
 import { compareDesc } from "date-fns"
-
-import ViewCounter from "../../components/view-counter"
 
 export const metadata = {
   title: "Blog",

@@ -1,6 +1,6 @@
 "use client"
 
-import { HTMLProps, useEffect, useState } from "react"
+import { HTMLProps, useEffect } from "react"
 import useSWR from "swr"
 
 import { cn } from "../utils"
@@ -28,7 +28,6 @@ const ViewCounter: React.FC<ViewCounterProps> = ({
   trackView,
   className,
   children,
-  ...properties
 }) => {
   const { data, mutate, isLoading } = useSWR<PostView[]>("/api/views", fetcher)
 
@@ -70,4 +69,4 @@ const ViewCounter: React.FC<ViewCounterProps> = ({
   )
 }
 
-export default ViewCounter
+export { ViewCounter }

@@ -7,10 +7,8 @@ import "@/styles/mdx.css"
 import React from "react"
 import { Metadata } from "next"
 import Link from "next/link"
-import { Author, Page } from "@/components"
+import { Author, Page, ViewCounter } from "@/components"
 import { cn, formatDate } from "@/utils"
-
-import ViewCounter from "../../../components/view-counter"
 
 interface PostPageProps {
   params: {
