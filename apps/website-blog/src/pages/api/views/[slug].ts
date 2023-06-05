@@ -26,6 +26,16 @@ async function getAsyncIPAddress(): Promise<string | undefined> {
 }
 
 async function getIPAddress(req: NextApiRequest): Promise<string> {
+  const asyncUserIPAddress = await getAsyncIPAddress()
+  if (asyncUserIPAddress && isValidIPAddress(asyncUserIPAddress)) {
+    return asyncUserIPAddress
+  }
+
+  const requestedIp = requestIp.getClientIp(req)
+  if (requestedIp && isValidIPAddress(requestedIp)) {
+    return requestedIp
+  }
+
   if (req.headers["x-real-ip"]) {
     const realIP = req.headers["x-real-ip"] as string
     if (isValidIPAddress(realIP)) {
@@ -45,16 +55,6 @@ async function getIPAddress(req: NextApiRequest): Promise<string> {
     if (validIPs.length > 0) {
       return validIPs[0]
     }
-  }
-
-  const asyncUserIPAddress = await getAsyncIPAddress()
-  if (asyncUserIPAddress && isValidIPAddress(asyncUserIPAddress)) {
-    return asyncUserIPAddress
-  }
-
-  const requestedIp = requestIp.getClientIp(req)
-  if (requestedIp && isValidIPAddress(requestedIp)) {
-    return requestedIp
   }
 
   return uuidv4()

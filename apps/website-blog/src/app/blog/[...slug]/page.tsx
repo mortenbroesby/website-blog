@@ -103,7 +103,7 @@ export default async function PostPage({ params }: PostPageProps) {
       </div>
 
       <div className="flex justify-center">
-        <HitCounter slug={post.slugAsParams} trackView={false} />
+        <HitCounter slug={post.slugAsParams} trackView />
       </div>
     </Page>
   )
