@@ -24,7 +24,7 @@ export default function RootPage() {
 
         <div className="flex flex-col justify-center">
           <Avatar
-            src="/images/avatars/mortenbroesby.jpeg"
+            src="/images/avatars/mortenbroesby.jpg"
             alt="Me"
             className="w-full flex flex-row justify-center"
           />

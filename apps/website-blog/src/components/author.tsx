@@ -24,10 +24,10 @@ function Author({
         <div className="mr-2">
           <Image
             src={avatar}
-            className="bg-zinc-100 h-8 w-8 rounded-full text-clip"
+            className="bg-zinc-100 h-11 w-11 rounded-full text-clip"
             alt={title}
-            width={32}
-            height={32}
+            width={44}
+            height={44}
           />
         </div>
 
