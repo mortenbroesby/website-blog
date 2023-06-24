@@ -29,7 +29,11 @@ const ViewCounter: React.FC<ViewCounterProps> = ({
   className,
   children,
 }) => {
-  const { data, mutate, isLoading } = useSWR<PostView[]>("/api/views", fetcher)
+  const {
+    data = [],
+    mutate,
+    isLoading,
+  } = useSWR<PostView[]>("/api/views", fetcher)
 
   const viewsForSlug = data?.find((view) => view.slug === slug)
   const views = new Number(viewsForSlug?.count || 0)

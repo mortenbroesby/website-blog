@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { Page, ViewCounter } from "@/components"
 import { formatDate } from "@/utils"
+import ErrorBoundary from "~/src/components/error-boundary"
 import { allPosts } from "contentlayer/generated"
 import { compareDesc } from "date-fns"
 
@@ -47,15 +48,17 @@ export default async function BlogPage() {
                 )}
               </div>
 
-              <ViewCounter
-                className="text-muted-foreground text-xs"
-                slug={post.slugAsParams}
-                trackView={false}
-              >
-                <p className="text-muted-foreground text-xs">
-                  {formatDate(post.date)}
-                </p>
-              </ViewCounter>
+              <ErrorBoundary>
+                <ViewCounter
+                  className="text-muted-foreground text-xs"
+                  slug={post.slugAsParams}
+                  trackView={false}
+                >
+                  <p className="text-muted-foreground text-xs">
+                    {formatDate(post.date)}
+                  </p>
+                </ViewCounter>
+              </ErrorBoundary>
 
               <Link href={post.slug} className="absolute inset-0">
                 <span className="sr-only">View Article</span>

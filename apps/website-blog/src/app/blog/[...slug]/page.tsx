@@ -10,6 +10,7 @@ import Link from "next/link"
 import { Author, Page } from "@/components"
 import { cn, formatDate } from "@/utils"
 import { HitCounter } from "~/src/components"
+import ErrorBoundary from "~/src/components/error-boundary"
 
 interface PostPageProps {
   params: {
@@ -103,7 +104,9 @@ export default async function PostPage({ params }: PostPageProps) {
       </div>
 
       <div className="flex justify-center">
-        <HitCounter slug={post.slugAsParams} trackView />
+        <ErrorBoundary>
+          <HitCounter slug={post.slugAsParams} trackView />
+        </ErrorBoundary>
       </div>
     </Page>
   )

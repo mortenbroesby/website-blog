@@ -5,6 +5,7 @@
     "preinstall": "npx only-allow pnpm",
     "build": "turbo run build",
     "dev": "turbo run dev",
+    "start": "turbo run dev",
     "lint": "turbo run lint",
     "lint:husky": "lint-staged",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
